@@ -9,6 +9,8 @@ using UnityEngine;
 [RequireComponent(typeof(GameManager))]
 public class StateManager : MonoBehaviour
 {
+    private const string k_extension = ".sdat";
+
     private string m_saveDirectory;
     private List<uint> m_saves = new();
 
@@ -28,6 +30,7 @@ public class StateManager : MonoBehaviour
 
         foreach (string s in Directory.GetFiles(m_saveDirectory))
         {
+            if (!Path.GetExtension(s).Equals(k_extension)) continue;
             m_saves.Add(uint.Parse(Path.GetFileNameWithoutExtension(s)));
         }
     }
@@ -60,7 +63,7 @@ public class StateManager : MonoBehaviour
 
     private IEnumerator ISave()
     {
-        string path = m_saveDirectory + m_activeState.SaveID + ".sdat";
+        string path = m_saveDirectory + m_activeState.SaveID + k_extension;
         using FileStream fs = File.Create(path);
         Task t = MessagePackSerializer.SerializeAsync(fs, m_activeState);
         yield return new WaitUntil(() => t.IsCompleted);
@@ -68,7 +71,7 @@ public class StateManager : MonoBehaviour
 
     public Coroutine Load(uint saveID)
     {
-        string path = m_saveDirectory + saveID + ".sdat";
+        string path = m_saveDirectory + saveID + k_extension;
         if (!File.Exists(path)) return null;
         return StartCoroutine(ILoad(path));
     }

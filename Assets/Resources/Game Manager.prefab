@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 899203555692948130}
   - component: {fileID: 5678029527544762858}
-  - component: {fileID: -7690935457845008958}
   - component: {fileID: -6060480819375890698}
+  - component: {fileID: -7690935457845008958}
   - component: {fileID: -5044415413935212970}
   m_Layer: 0
   m_Name: Game Manager
@@ -47,18 +47,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50cd6c0f01cc69542928216c43050f1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
---- !u!114 &-7690935457845008958
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3613541358671235328}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50865726672a5184ba7a66269fdf5bee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SceneManager
 --- !u!114 &-6060480819375890698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79,6 +67,18 @@ MonoBehaviour:
     LastSaved:
       _dateTime: 1/1/0001 12:00:00 AM
     TimePlayedSeconds: 0
+--- !u!114 &-7690935457845008958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3613541358671235328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50865726672a5184ba7a66269fdf5bee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SceneManager
 --- !u!114 &-5044415413935212970
 MonoBehaviour:
   m_ObjectHideFlags: 0
