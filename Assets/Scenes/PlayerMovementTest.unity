@@ -407,16 +407,15 @@ MonoBehaviour:
   pole: {fileID: 7837604767723009802, guid: c1fc39570a14d92489ad22d923b7d671, type: 3}
   chair: {fileID: 5859216245648044646, guid: 08c65a327577dba4db50dfbde2ad8f8f, type: 3}
   loader: {fileID: 3001906940638906332, guid: 76f050dc2afd51049a97d2e255f28921, type: 3}
+  chairs: {fileID: 0}
   lineHeight: 15
   lineSide: 2
   chairDensity: 1
   start: {x: 0, y: 5, z: 50}
-  end: {x: 125, y: 5, z: 50}
+  end: {x: -75, y: 5, z: 60}
   poleLocations:
-  - {x: 25, y: 0, z: 50}
-  - {x: 50, y: 0, z: 50}
-  - {x: 75, y: 10, z: 50}
-  - {x: 100, y: 10, z: 50}
+  - {x: -25, y: 0, z: 50}
+  - {x: -50, y: 0, z: 50}
 --- !u!114 &253825170
 MonoBehaviour:
   m_ObjectHideFlags: 0

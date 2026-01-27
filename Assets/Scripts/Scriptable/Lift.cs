@@ -13,6 +13,7 @@ public class Lift : MonoBehaviour
     public GameObject pole;
     public GameObject chair;
     public GameObject loader;
+    public GameObject chairs;
 
     // Adjustments for the chair spline
     public float lineHeight;
@@ -65,5 +66,6 @@ public class Lift : MonoBehaviour
         ingameChair.GetComponent<SplineAnimate>().Container = splineContainer;
         ingameChair.GetComponent<SplineAnimate>().Duration = splineContainer[0].GetLength() * 2;
         ingameChair.GetComponent<SplineAnimate>().Play();
+        
     }   
 }
