@@ -13,14 +13,14 @@ public class Lift : MonoBehaviour
     public GameObject pole;
     public GameObject chair;
     public GameObject loader;
-    public GameObject chairs;
+    public GameObject rope;
 
     // Adjustments for the chair spline
     public float lineHeight;
     public float lineSide;
 
     // How many chairs on average between each pole
-    public float chairDensity;
+    public int numChairs;
 
     public Vector3 start;
     public Vector3 end;
@@ -36,36 +36,50 @@ public class Lift : MonoBehaviour
 
     public void BuildLift()
     {
+        GameObject ropeStructure = Instantiate(rope, start, Quaternion.identity);
         GameObject startStructure = Instantiate(loader, start, Quaternion.identity);
         GameObject endStructure = Instantiate(loader, end, Quaternion.identity);
 
-        SplineContainer splineContainer = startStructure.AddComponent<SplineContainer>();
+        chair.GetComponent<SplineAnimate>().Container = ropeStructure.GetComponent<SplineContainer>();
+        startStructure.GetComponent<SplineInstantiate>().Container = ropeStructure.GetComponent<SplineContainer>();
+
+        SplineContainer splineContainer = ropeStructure.GetComponent<SplineContainer>();
+
         splineContainer[0].Closed = true;
-        splineContainer[0].Add(new BezierKnot(new Vector3(0,0,0) + new Vector3(0, 0, lineSide) / loader.transform.localScale.x));
+        splineContainer[0].Add(new BezierKnot(new Vector3(0,0,0) + new Vector3(0, 0, lineSide)));
 
         foreach (Vector3 location in poleLocations)
         {
             Debug.Log(location);
             Instantiate(pole, location, pole.transform.rotation);
-            splineContainer[0].Add(new BezierKnot((location - start + new Vector3(0, lineHeight, lineSide)) / loader.transform.localScale.x));
+            splineContainer[0].Add(new BezierKnot(location - start + new Vector3(0, lineHeight, lineSide)));
         }
 
-        splineContainer[0].Add(new BezierKnot((end - start + new Vector3(0, 0, lineSide)) / loader.transform.localScale.x));
-        splineContainer[0].Add(new BezierKnot((end - start + new Vector3(0, 0, -lineSide)) / loader.transform.localScale.x));
+        splineContainer[0].Add(new BezierKnot(end - start + new Vector3(0, 0, lineSide)));
+        splineContainer[0].Add(new BezierKnot(end - start + new Vector3(0, 0, -lineSide)));
 
         poleLocations.Reverse();
+
         foreach (Vector3 location in poleLocations)
         {
-            splineContainer[0].Add(new BezierKnot((location - start + new Vector3(0, lineHeight, -lineSide)) / loader.transform.localScale.x));
+            splineContainer[0].Add(new BezierKnot(location - start + new Vector3(0, lineHeight, -lineSide)));
         }
 
-        splineContainer[0].Add(new BezierKnot(new Vector3(0,0,0) + new Vector3(0, 0, -lineSide) / loader.transform.localScale.x));
+        splineContainer[0].Add(new BezierKnot(new Vector3(0,0,0) + new Vector3(0, 0, -lineSide)));
 
+        //startStructure.GetComponent<SplineInstantiate>().Clear();
         // Generate chairs along spline
+
+
         GameObject ingameChair = Instantiate(chair, start, Quaternion.identity);
         ingameChair.GetComponent<SplineAnimate>().Container = splineContainer;
         ingameChair.GetComponent<SplineAnimate>().Duration = splineContainer[0].GetLength() * 2;
-        ingameChair.GetComponent<SplineAnimate>().Play();
+
+        ingameChair = Instantiate(chair, start, Quaternion.identity);
+        ingameChair.GetComponent<SplineAnimate>().Container = splineContainer;
+        ingameChair.GetComponent<SplineAnimate>().Duration = splineContainer[0].GetLength() * 2;
+        ingameChair.GetComponent<SplineAnimate>().StartOffset = 0.5f;
+        // ingameChair.GetComponent<SplineAnimate>().Play();
         
     }   
 }
