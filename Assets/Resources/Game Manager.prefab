@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -6060480819375890698}
   - component: {fileID: -7690935457845008958}
   - component: {fileID: -5044415413935212970}
+  - component: {fileID: 6593169654364117274}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -67,6 +68,18 @@ MonoBehaviour:
     LastSaved:
       _dateTime: 1/1/0001 12:00:00 AM
     TimePlayedSeconds: 0
+    ActiveQuests: []
+    CompletedQuestIDs: []
+    SlopeA:
+      Discovered: 0
+      Finished: 0
+      BestTime: 0
+      BestScore: 0
+    SlopeB:
+      Discovered: 0
+      Finished: 0
+      BestTime: 0
+      BestScore: 0
 --- !u!114 &-7690935457845008958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92,3 +105,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InputManager
   m_inputActions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+--- !u!114 &6593169654364117274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3613541358671235328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56628fd3d64ebd149a06371e6826d214, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::QuestManager
+  m_quests: []

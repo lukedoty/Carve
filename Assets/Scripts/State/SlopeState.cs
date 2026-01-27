@@ -1,5 +1,4 @@
 using MessagePack;
-using UnityEngine;
 
 [MessagePackObject(keyAsPropertyName: true), System.Serializable]
 public class SlopeState
