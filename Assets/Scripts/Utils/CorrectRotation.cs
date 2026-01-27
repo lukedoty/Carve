@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CorrectChairRotation : MonoBehaviour
+public class CorrectRotation : MonoBehaviour
 {
     private Quaternion m_baselineRotation;
 
