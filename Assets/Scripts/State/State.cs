@@ -13,9 +13,9 @@ public class State
 
     //[Header("Settings")]
 
-    //[Header("Quests")]
-    //Active Quests
-    //Completed Quests
+    [Header("Quests")]
+    public List<QuestState> ActiveQuests;
+    public List<string> CompletedQuestIDs;
 
     //[Header("Collectables")]
     //Stickers
@@ -28,12 +28,15 @@ public class State
 
     //[Header("Lifts")]
     //Discovered lifts
+
+    //[Header("Stats")]
+    //All the random whatevers
 }
 
 [CreateAssetMenu(fileName = "New State Asset", menuName = "Scriptable Objects/State Asset")]
 public class StateAsset : ScriptableObject
 {
     [SerializeField]
-    State m_state;
+    private State m_state;
     public State State => m_state;
 }

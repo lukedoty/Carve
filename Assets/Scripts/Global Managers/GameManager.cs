@@ -1,6 +1,9 @@
 using UnityEngine;
 
-[RequireComponent(typeof(SceneManager), typeof(StateManager), typeof(InputManager))]
+[RequireComponent(typeof(SceneManager))]
+[RequireComponent(typeof(StateManager))]
+[RequireComponent(typeof(InputManager))]
+[RequireComponent(typeof(QuestManager))]
 public class GameManager : MonoBehaviour
 {
     private static GameManager s_instance;
@@ -10,9 +13,13 @@ public class GameManager : MonoBehaviour
 
     private StateManager m_stateManager;
     public static StateManager State => s_instance.m_stateManager;
+    public static State ActiveState => State.ActiveState;
 
     private InputManager m_inputManager;
     public static InputManager Input => s_instance.m_inputManager;
+
+    private QuestManager m_questManager;
+    public static QuestManager Quest => s_instance.m_questManager;
 
 
     private void Awake()
