@@ -407,10 +407,10 @@ MonoBehaviour:
   pole: {fileID: 7837604767723009802, guid: c1fc39570a14d92489ad22d923b7d671, type: 3}
   chair: {fileID: 5859216245648044646, guid: 08c65a327577dba4db50dfbde2ad8f8f, type: 3}
   loader: {fileID: 3001906940638906332, guid: 76f050dc2afd51049a97d2e255f28921, type: 3}
-  chairs: {fileID: 0}
-  lineHeight: 15
-  lineSide: 2
-  chairDensity: 1
+  lineHeight: 13.4
+  lineSide: 2.4
+  numChairs: 10
+  duration: 4
   start: {x: 0, y: 5, z: 50}
   end: {x: -75, y: 5, z: 60}
   poleLocations:

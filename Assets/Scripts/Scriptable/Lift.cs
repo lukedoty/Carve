@@ -10,19 +10,26 @@ using UnityEngine.UIElements;
 public class Lift : MonoBehaviour
 {
     public String liftName;
+
+    // Models that will make up the lift
     public GameObject pole;
     public GameObject chair;
     public GameObject loader;
-    public GameObject chairs;
 
     // Adjustments for the chair spline
     public float lineHeight;
     public float lineSide;
 
-    // How many chairs on average between each pole
-    public float chairDensity;
+    // How many chairs across the entire wire
+    // Will be automatically spaced evenly
+    public float numChairs;
+    // How long for a chair to make a full revolution on the spline 
+    // This will be multiplied by the length for consistency among all lifts
+    public float duration;
 
+    // Location of the entrance
     public Vector3 start;
+    // Location of the exit
     public Vector3 end;
 
     // Pole locations in ORDER from bottom to top
@@ -30,15 +37,26 @@ public class Lift : MonoBehaviour
 
     public void Start()
     {
-        Debug.Log("Ran!");
         BuildLift();
+    }
+
+    // Pole locations
+    void OnDrawGizmosSelected()
+    {
+        foreach (Vector3 location in poleLocations)
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawCube(location, Vector3.one);
+        }
     }
 
     public void BuildLift()
     {
+        // Builds entrance and exit
         GameObject startStructure = Instantiate(loader, start, Quaternion.identity);
         GameObject endStructure = Instantiate(loader, end, Quaternion.identity);
 
+        // Builds spline and places poles
         SplineContainer splineContainer = startStructure.AddComponent<SplineContainer>();
         splineContainer[0].Closed = true;
         splineContainer[0].Add(new BezierKnot(new Vector3(0,0,0) + new Vector3(0, 0, lineSide) / loader.transform.localScale.x));
@@ -54,6 +72,7 @@ public class Lift : MonoBehaviour
         splineContainer[0].Add(new BezierKnot((end - start + new Vector3(0, 0, -lineSide)) / loader.transform.localScale.x));
 
         poleLocations.Reverse();
+
         foreach (Vector3 location in poleLocations)
         {
             splineContainer[0].Add(new BezierKnot((location - start + new Vector3(0, lineHeight, -lineSide)) / loader.transform.localScale.x));
@@ -61,11 +80,19 @@ public class Lift : MonoBehaviour
 
         splineContainer[0].Add(new BezierKnot(new Vector3(0,0,0) + new Vector3(0, 0, -lineSide) / loader.transform.localScale.x));
 
-        // Generate chairs along spline
-        GameObject ingameChair = Instantiate(chair, start, Quaternion.identity);
-        ingameChair.GetComponent<SplineAnimate>().Container = splineContainer;
-        ingameChair.GetComponent<SplineAnimate>().Duration = splineContainer[0].GetLength() * 2;
-        ingameChair.GetComponent<SplineAnimate>().Play();
+        // Generates animated chairs along the spline
+        for (int i = 0; i < numChairs; i++)
+        {
+            float offset = (1 / numChairs) * i;
+            
+            GameObject ingameChair = Instantiate(chair, start, Quaternion.identity);
+            SplineAnimate animator = ingameChair.GetComponent<SplineAnimate>();
+
+            animator.Container = splineContainer;
+            animator.Duration = splineContainer[0].GetLength() * duration;
+            animator.StartOffset = offset;
+            animator.Play();
+        }
         
     }   
 }
