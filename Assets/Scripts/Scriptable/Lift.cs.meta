@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 268e64e423b51ae499e54025eeebed30
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - pole: {fileID: 7837604767723009802, guid: c1fc39570a14d92489ad22d923b7d671, type: 3}
+  - chair: {fileID: 5859216245648044646, guid: 08c65a327577dba4db50dfbde2ad8f8f, type: 3}
+  - loader: {fileID: 3001906940638906332, guid: 76f050dc2afd51049a97d2e255f28921, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
