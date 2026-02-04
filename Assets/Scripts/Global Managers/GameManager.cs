@@ -30,5 +30,6 @@ public class GameManager : MonoBehaviour
         m_sceneManager = GetComponent<SceneManager>();
         m_stateManager = GetComponent<StateManager>();
         m_inputManager = GetComponent<InputManager>();
+        m_questManager = GetComponent<QuestManager>();
     }
 }
