@@ -9,23 +9,34 @@ public class Quest : ScriptableObject
     private string m_questID;
     public string QuestID => m_questID;
 
-    private List<string> m_criteria;
-    public List<string> Criteria => m_criteria;
+    [SerializeField]
+    private string m_name;
+    public string Name => m_name;
+
+    [SerializeField]
+    private string m_description;
+    public string Description => m_description;
+
+    [SerializeField]
+    private List<Criterion> m_criteria;
+    public List<Criterion> Criteria => m_criteria;
 }
 
-[MessagePackObject(keyAsPropertyName: true), System.Serializable]
+[MessagePackObject, System.Serializable]
 public class QuestState
 {
+    [Key(0)]
     public string QuestID;
-    public List<string> Criteria;
+    [Key(1)]
+    public SerializableDictionary<string, bool> CriteriaPassed;
 
     public QuestState() { }
+
     public QuestState(Quest q)
     {
         QuestID = q.QuestID;
 
-        //TODO: Will need to be updated once criteria are no longer strings
-        Criteria = new();
-        foreach (string c in q.Criteria) Criteria.Add(new string(c));
+        CriteriaPassed = new();
+        foreach (Criterion c in q.Criteria) CriteriaPassed.Add(c.CriterionID, c.Check());
     }
 }
