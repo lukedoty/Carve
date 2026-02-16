@@ -10,4 +10,9 @@ public class Sticker : ScriptableObject
     [SerializeField]
     private Image m_stickerImage;
     public Image StickerImage => m_stickerImage;
+    private bool m_unlocked = false;
+    public bool Unlocked {
+        get => m_unlocked; 
+        set => m_unlocked = value;
+    }
 }

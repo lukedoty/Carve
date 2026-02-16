@@ -4,6 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(StateManager))]
 [RequireComponent(typeof(InputManager))]
 [RequireComponent(typeof(QuestManager))]
+[RequireComponent(typeof(StickerManager))]
 public class GameManager : MonoBehaviour
 {
     private static GameManager s_instance;
@@ -20,6 +21,8 @@ public class GameManager : MonoBehaviour
 
     private QuestManager m_questManager;
     public static QuestManager Quest => s_instance.m_questManager;
+    private StickerManager m_stickerManager;
+    public static StickerManager Stickers => s_instance.m_stickerManager;
 
 
     private void Awake()
@@ -31,5 +34,6 @@ public class GameManager : MonoBehaviour
         m_stateManager = GetComponent<StateManager>();
         m_inputManager = GetComponent<InputManager>();
         m_questManager = GetComponent<QuestManager>();
+        m_stickerManager = GetComponent<StickerManager>();
     }
 }
