@@ -304,6 +304,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2364865492163525185, guid: 65e37514934289846968e4865eed34b2, type: 3}
+      propertyPath: m_stickerRegistry.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3613541358671235328, guid: 65e37514934289846968e4865eed34b2, type: 3}
       propertyPath: m_Name
       value: Game Manager

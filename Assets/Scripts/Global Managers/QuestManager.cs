@@ -9,9 +9,9 @@ public class QuestManager : MonoBehaviour
     public bool QuestEvaluationEnabled => m_questEvaluationEnabled;
 
     [SerializeField]
-    private List<Quest> m_quests = new();
-    private Dictionary<string, Quest> m_questDict;
-    public Dictionary<string, Quest> Quests => m_questDict;
+    private List<Quest> m_questRegistry;
+    private Dictionary<string, Quest> m_questRegistryDict;
+    public Dictionary<string, Quest> QuestRegistry => m_questRegistryDict;
 
     public List<QuestState> ActiveQuestStates => GameManager.ActiveState.ActiveQuests;
     public List<QuestState> CompletedQuestStates => GameManager.ActiveState.CompletedQuests;
@@ -20,10 +20,10 @@ public class QuestManager : MonoBehaviour
 
     private void OnValidate()
     {
-        foreach (Quest q in m_quests)
+        foreach (Quest q in m_questRegistry)
         {
             if (q == null) continue;
-            if (m_quests.FindAll(x => x != null && x.QuestID == q.QuestID).Count <= 1) continue;
+            if (m_questRegistry.FindAll(x => x != null && x.QuestID == q.QuestID).Count <= 1) continue;
 
             Debug.LogError($"A quest with the same ID \"{q.QuestID}\" has already been added to the QuestManager's Quests list.");
             break;
@@ -32,12 +32,12 @@ public class QuestManager : MonoBehaviour
 
     private void Awake()
     {
-        m_questDict = new Dictionary<string, Quest>();
+        m_questRegistryDict = new Dictionary<string, Quest>();
 
-        foreach (Quest q in m_quests)
+        foreach (Quest q in m_questRegistry)
         {
-            if (m_questDict.ContainsKey(q.QuestID)) continue;
-            m_questDict.Add(q.QuestID, q);
+            if (m_questRegistryDict.ContainsKey(q.QuestID)) continue;
+            m_questRegistryDict.Add(q.QuestID, q);
         }
     }
 
@@ -66,8 +66,8 @@ public class QuestManager : MonoBehaviour
 
     public bool EvaluateQuest(QuestState q)
     {
-        if (!m_questDict.ContainsKey(q.QuestID)) return false;
-        Criterion[] criteria = m_questDict[q.QuestID].Criteria;
+        if (!m_questRegistryDict.ContainsKey(q.QuestID)) return false;
+        Criterion[] criteria = m_questRegistryDict[q.QuestID].Criteria;
 
         bool questComplete = true;
 
@@ -93,9 +93,9 @@ public class QuestManager : MonoBehaviour
 
     public bool AssignQuest(string questID)
     {
-        if (!Quests.ContainsKey(questID)) return false;
+        if (!QuestRegistry.ContainsKey(questID)) return false;
 
-        ActiveQuestStates.Add(new QuestState(Quests[questID]));
+        ActiveQuestStates.Add(new QuestState(QuestRegistry[questID]));
         return true;
     }
 
