@@ -15,7 +15,7 @@ public class State
 
     [Header("Quests")]
     public List<QuestState> ActiveQuests;
-    public List<string> CompletedQuestIDs;
+    public List<QuestState> CompletedQuests;
 
 
     [Header("Collectables")]

@@ -21,13 +21,14 @@ public class GameManager : MonoBehaviour
 
     private QuestManager m_questManager;
     public static QuestManager Quest => s_instance.m_questManager;
+
     private StickerManager m_stickerManager;
-    public static StickerManager Stickers => s_instance.m_stickerManager;
+    public static StickerManager Sticker => s_instance.m_stickerManager;
 
 
     private void Awake()
     {
-        if (s_instance != null && s_instance != this) Destroy(this);
+        if (s_instance != null && s_instance != this) Destroy(gameObject);
         else s_instance = this;
 
         m_sceneManager = GetComponent<SceneManager>();

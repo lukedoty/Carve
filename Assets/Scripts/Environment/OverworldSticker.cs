@@ -5,14 +5,13 @@ using UnityEngine;
 public class OverworldSticker : MonoBehaviour
 {
     [SerializeField]
-    public string stickerId;
-    List<string> stickerIds;
+    private string m_stickerID;
 
     public void Start()
     {
-        if (GameManager.Stickers.HasSticker(stickerId))
+        if (GameManager.Sticker.HasObtainedSticker(m_stickerID))
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
 
@@ -20,8 +19,8 @@ public class OverworldSticker : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            GameManager.Stickers.AwardSticker(stickerId);
-            Destroy(this);
+            GameManager.Sticker.AwardSticker(m_stickerID);
+            Destroy(gameObject);
         }
     }
 }
