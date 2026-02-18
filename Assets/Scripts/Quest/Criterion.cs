@@ -1,10 +1,8 @@
+using System;
 using UnityEngine;
 
 public abstract class Criterion : ScriptableObject
 {
-    [SerializeField] private string m_criterionID;
-    public string CriterionID => m_criterionID;
-
     [SerializeField]
     private string m_description;
     public string Description => m_description;

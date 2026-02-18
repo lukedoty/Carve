@@ -18,8 +18,8 @@ public class Quest : ScriptableObject
     public string Description => m_description;
 
     [SerializeField]
-    private List<Criterion> m_criteria;
-    public List<Criterion> Criteria => m_criteria;
+    private Criterion[] m_criteria;
+    public Criterion[] Criteria => m_criteria;
 }
 
 [MessagePackObject, System.Serializable]
@@ -28,7 +28,7 @@ public class QuestState
     [Key(0)]
     public string QuestID;
     [Key(1)]
-    public SerializableDictionary<string, bool> CriteriaPassed;
+    public List<int> PassedCriteriaIndices;
 
     public QuestState() { }
 
@@ -36,7 +36,10 @@ public class QuestState
     {
         QuestID = q.QuestID;
 
-        CriteriaPassed = new();
-        foreach (Criterion c in q.Criteria) CriteriaPassed.Add(c.CriterionID, c.Check());
+        PassedCriteriaIndices = new();
+        for (int i = 0; i < q.Criteria.Length; i++)
+        {
+            if (q.Criteria[i].Check()) PassedCriteriaIndices.Add(i);
+        }
     }
 }

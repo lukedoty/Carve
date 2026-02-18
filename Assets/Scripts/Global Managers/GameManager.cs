@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if (s_instance != null && s_instance != this) Destroy(this);
+        if (s_instance != null && s_instance != this) Destroy(gameObject);
         else s_instance = this;
 
         m_sceneManager = GetComponent<SceneManager>();

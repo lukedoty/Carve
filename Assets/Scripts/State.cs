@@ -14,8 +14,8 @@ public class State
     //[Header("Settings")]
 
     [Header("Quests")]
-    public SerializableDictionary<string, QuestState> ActiveQuests;
-    public SerializableDictionary<string, QuestState> CompletedQuests;
+    public List<QuestState> ActiveQuests;
+    public List<QuestState> CompletedQuests;
 
     //[Header("Collectables")]
     //Stickers

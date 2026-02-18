@@ -9,12 +9,14 @@ public class QuestManager : MonoBehaviour
     public bool QuestEvaluationEnabled => m_questEvaluationEnabled;
 
     [SerializeField]
-    private List<Quest> m_quests;
+    private List<Quest> m_quests = new();
     private Dictionary<string, Quest> m_questDict;
     public Dictionary<string, Quest> Quests => m_questDict;
 
-    public SerializableDictionary<string, QuestState> ActiveQuestStates => GameManager.ActiveState.ActiveQuests;
-    public SerializableDictionary<string, QuestState> CompletedQuestStates => GameManager.ActiveState.CompletedQuests;
+    public List<QuestState> ActiveQuestStates => GameManager.ActiveState.ActiveQuests;
+    public List<QuestState> CompletedQuestStates => GameManager.ActiveState.CompletedQuests;
+
+    private List<QuestState> m_completedQuestBuffer = new();
 
     private void OnValidate()
     {
@@ -49,36 +51,51 @@ public class QuestManager : MonoBehaviour
 
     private void EvaluateActiveQuests()
     {
-        foreach (QuestState q in ActiveQuestStates.Values)
+        m_completedQuestBuffer.Clear();
+
+        foreach (QuestState q in ActiveQuestStates)
         {
-            if (EvaluateQuest(q)) CompleteQuest(q);
+            if (EvaluateQuest(q)) m_completedQuestBuffer.Add(q);
+        }
+
+        foreach (QuestState q in m_completedQuestBuffer)
+        {
+            CompleteQuest(q);
         }
     }
 
     public bool EvaluateQuest(QuestState q)
     {
-        bool questComplete = true;
-        foreach (Criterion c in m_questDict[q.QuestID].Criteria)
-        {
-            if (q.CriteriaPassed[c.CriterionID]) continue;
+        if (!m_questDict.ContainsKey(q.QuestID)) return false;
+        Criterion[] criteria = m_questDict[q.QuestID].Criteria;
 
-            if (c.Check()) q.CriteriaPassed[c.CriterionID] = true;
-            else
-            {
-                questComplete = false;
-                break;
-            }
+        bool questComplete = true;
+
+        for (int i = 0; i < criteria.Length; i++)
+        {
+            if (q.PassedCriteriaIndices.Contains(i)) continue;
+
+            if (criteria[i].Check()) q.PassedCriteriaIndices.Add(i);
+            else questComplete = false;
         }
 
+        Debug.Log("Quest " + q.QuestID + " evaluates to " + questComplete);
         return questComplete;
     }
+
+    public bool ActiveQuestStatesContains(string questID) => ActiveQuestStates.Exists(x => x.QuestID == questID);
+
+    public bool CompletedQuestStatesContains(string questID) => CompletedQuestStates.Exists(x => x.QuestID == questID);
+
+    public QuestState GetActiveQuestState(string questID) => ActiveQuestStates.Find(x => x.QuestID == questID);
+
+    public QuestState GetCompletedQuestState(string questID) => CompletedQuestStates.Find(x => x.QuestID == questID);
 
     public bool AssignQuest(string questID)
     {
         if (!Quests.ContainsKey(questID)) return false;
-        if (ActiveQuestStates.ContainsKey(questID)) return false;
 
-        ActiveQuestStates.Add(questID, new QuestState(Quests[questID]));
+        ActiveQuestStates.Add(new QuestState(Quests[questID]));
         return true;
     }
 
@@ -86,11 +103,11 @@ public class QuestManager : MonoBehaviour
 
     public bool CompleteQuest(string questID)
     {
-        if (!Quests.ContainsKey(questID)) return false;
-        if (!ActiveQuestStates.ContainsKey(questID)) return false;
+        if (!ActiveQuestStatesContains(questID)) return false;
 
-        CompletedQuestStates.Add(questID, ActiveQuestStates[questID]);
-        ActiveQuestStates.Remove(questID);
+        QuestState q = GetActiveQuestState(questID);
+        CompletedQuestStates.Add(q);
+        ActiveQuestStates.Remove(q);
         return true;
     }
 
