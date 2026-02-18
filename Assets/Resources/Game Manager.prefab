@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -7690935457845008958}
   - component: {fileID: -5044415413935212970}
   - component: {fileID: 6593169654364117274}
+  - component: {fileID: 2364865492163525185}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -70,6 +71,7 @@ MonoBehaviour:
     TimePlayedSeconds: 0
     ActiveQuests: []
     CompletedQuestIDs: []
+    ObtainedStickerIDs: []
     SlopeA:
       Discovered: 0
       Finished: 0
@@ -118,3 +120,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::QuestManager
   m_quests: []
+--- !u!114 &2364865492163525185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3613541358671235328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb8ba2bd0d4b5f44a8243bc40f20c75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StickerManager
+  m_stickers: []

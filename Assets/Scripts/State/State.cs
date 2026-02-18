@@ -17,8 +17,9 @@ public class State
     public List<QuestState> ActiveQuests;
     public List<string> CompletedQuestIDs;
 
-    //[Header("Collectables")]
-    //Stickers
+
+    [Header("Collectables")]
+    public List<string> ObtainedStickerIDs;
     //Characters
     //Customizations
 
