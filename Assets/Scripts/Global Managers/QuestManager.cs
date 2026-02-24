@@ -83,9 +83,9 @@ public class QuestManager : MonoBehaviour
         return questComplete;
     }
 
-    public bool ActiveQuestStatesContains(string questID) => ActiveQuestStates.Exists(x => x.QuestID == questID);
+    public bool IsQuestActive(string questID) => ActiveQuestStates.Exists(x => x.QuestID == questID);
 
-    public bool CompletedQuestStatesContains(string questID) => CompletedQuestStates.Exists(x => x.QuestID == questID);
+    public bool IsQuestComplete(string questID) => CompletedQuestStates.Exists(x => x.QuestID == questID);
 
     public QuestState GetActiveQuestState(string questID) => ActiveQuestStates.Find(x => x.QuestID == questID);
 
@@ -103,7 +103,7 @@ public class QuestManager : MonoBehaviour
 
     public bool CompleteQuest(string questID)
     {
-        if (!ActiveQuestStatesContains(questID)) return false;
+        if (!IsQuestActive(questID)) return false;
 
         QuestState q = GetActiveQuestState(questID);
         CompletedQuestStates.Add(q);
