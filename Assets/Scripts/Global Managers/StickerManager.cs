@@ -34,17 +34,17 @@ public class StickerManager : MonoBehaviour
         }
     }
 
-    public bool AwardSticker(string id)
+    public bool HasSticker(string stickerID)
     {
-        if (!m_stickerRegistryDict.ContainsKey(id)) return false;
-        if (HasObtainedSticker(id)) return false;
-
-        ObtainedStickerIDs.Add(id);
-        return true;
+        return ObtainedStickerIDs.Contains(stickerID);
     }
 
-    public bool HasObtainedSticker(string id)
+    public bool AwardSticker(string stickerID)
     {
-        return ObtainedStickerIDs.Contains(id);
+        if (!m_stickerRegistryDict.ContainsKey(stickerID)) return false;
+        if (HasSticker(stickerID)) return false;
+
+        ObtainedStickerIDs.Add(stickerID);
+        return true;
     }
 }
