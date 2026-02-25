@@ -79,7 +79,6 @@ public class QuestManager : MonoBehaviour
             else questComplete = false;
         }
 
-        Debug.Log("Quest " + q.QuestID + " evaluates to " + questComplete);
         return questComplete;
     }
 
