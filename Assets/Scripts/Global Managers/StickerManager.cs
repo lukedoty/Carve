@@ -12,6 +12,7 @@ public class StickerManager : MonoBehaviour
 
     public void OnValidate()
     {
+        if (m_stickerRegistry == null) return;
         foreach (Sticker s in m_stickerRegistry)
         {
             if (s == null) continue;
