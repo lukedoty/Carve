@@ -134,4 +134,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbb8ba2bd0d4b5f44a8243bc40f20c75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StickerManager
-  m_stickerRegistry: []
+  m_stickerRegistry:
+  - {fileID: 11400000, guid: 93766c3b5a989f74abfab134678bff76, type: 2}

@@ -7,5 +7,4 @@ public static class YarnStickerFunctions
 
     [YarnCommand("award-sticker")]
     public static void AwardSticker(string stickerID) => GameManager.Sticker.AwardSticker(stickerID);
-
 }
