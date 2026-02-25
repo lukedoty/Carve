@@ -3,7 +3,8 @@
 Wow!
 My first ever Yarn script in Unity!
 
--> Gosh!
+-> Give me a quest!
+    <<assign-quest Play5SecondsQuest>>
 -> Incredible!
 -> I'm amazed!
 
