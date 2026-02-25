@@ -3,11 +3,11 @@ using UnityEngine;
 using System.Collections.Generic;
 
 [CreateAssetMenu(fileName = "New Quest Asset", menuName = "Scriptable Objects/Quest Asset")]
-public class Quest : ScriptableObject
+public class Quest : ScriptableObject, IRegisterable
 {
     [SerializeField]
     private string m_questID;
-    public string QuestID => m_questID;
+    public string ID => m_questID;
 
     [SerializeField]
     private string m_name;
@@ -38,7 +38,7 @@ public class QuestState
 
     public QuestState(Quest q)
     {
-        QuestID = q.QuestID;
+        QuestID = q.ID;
 
         PassedCriteriaIndices = new();
         for (int i = 0; i < q.Criteria.Length; i++)
