@@ -19,7 +19,7 @@ public class OverworldSticker : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            GameManager.Sticker.AwardSticker(m_stickerID);
+            GameManager.Sticker.ObtainSticker(m_stickerID);
             Destroy(gameObject);
         }
     }

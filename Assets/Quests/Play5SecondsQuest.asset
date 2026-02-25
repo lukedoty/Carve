@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f765b79d711a26248b1bd595ed9a2e79, type: 3}
   m_Name: Play5SecondsQuest
   m_EditorClassIdentifier: Assembly-CSharp::Quest
-  m_questID: Play5SecondsQuest
+  m_questID: play-5-seconds-quest
   m_name: Play For 5 Seconds
   m_description: 
   m_criteria:
   - {fileID: 11400000, guid: 10f6793b77bfe224f991fe00ee25ebf9, type: 2}
+  m_rewards:
+  - RewardType: 0
+    ID: example-sticker
