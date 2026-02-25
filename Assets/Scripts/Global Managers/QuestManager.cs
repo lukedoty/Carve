@@ -104,13 +104,32 @@ public class QuestManager : MonoBehaviour
     {
         if (!IsQuestActive(questID)) return false;
 
-        QuestState q = GetActiveQuestState(questID);
-        CompletedQuestStates.Add(q);
-        ActiveQuestStates.Remove(q);
+        QuestState qs = GetActiveQuestState(questID);
+        CompletedQuestStates.Add(qs);
+        ActiveQuestStates.Remove(qs);
+
+        ProcessRewards(QuestRegistry[questID]);
+
         return true;
     }
 
     public bool CompleteQuest(Quest q) => CompleteQuest(q.QuestID);
 
     public bool CompleteQuest(QuestState q) => CompleteQuest(q.QuestID);
+
+    private void ProcessRewards(Quest quest)
+    {
+        foreach (QuestReward r in quest.Rewards)
+        {
+        switch (r.RewardType)
+        {
+            case QuestRewardType.Sticker:
+                GameManager.Sticker.AwardSticker(r.ID);
+                break;
+            case QuestRewardType.Quest:
+                GameManager.Quest.AssignQuest(r.ID);
+                break;
+        }
+        }
+    }
 }

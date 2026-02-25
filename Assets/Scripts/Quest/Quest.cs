@@ -20,6 +20,10 @@ public class Quest : ScriptableObject
     [SerializeField]
     private Criterion[] m_criteria;
     public Criterion[] Criteria => m_criteria;
+
+    [SerializeField]
+    private QuestReward[] m_rewards;
+    public QuestReward[] Rewards => m_rewards;
 }
 
 [MessagePackObject, System.Serializable]

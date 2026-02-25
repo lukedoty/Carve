@@ -7,7 +7,8 @@ public class Sticker : ScriptableObject
     [SerializeField]
     private string m_stickerID;
     public string StickerID => m_stickerID;
+
     [SerializeField]
-    private Image m_stickerImage;
-    public Image StickerImage => m_stickerImage;
+    private Texture2D m_stickerImage;
+    public Texture2D StickerImage => m_stickerImage;
 }
