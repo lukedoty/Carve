@@ -9,6 +9,10 @@ public class Sticker : ScriptableObject, IRegisterable
     public string ID => m_stickerID;
 
     [SerializeField]
+    private string m_name;
+    public string Name => m_name;
+
+    [SerializeField]
     private Texture2D m_stickerImage;
     public Texture2D StickerImage => m_stickerImage;
 }

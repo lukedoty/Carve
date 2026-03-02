@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(GameManager))]
 public class QuestManager : RegistryController<Quest>
@@ -8,10 +9,23 @@ public class QuestManager : RegistryController<Quest>
     private bool m_questEvaluationEnabled = false;
     public bool QuestEvaluationEnabled => m_questEvaluationEnabled;
 
+    private UnityEvent<string> m_assignQuestEvent;
+    public UnityEvent<string> AssignQuestEvent => m_assignQuestEvent;
+
+    private UnityEvent<string> m_completeQuestEvent;
+    public UnityEvent<string> CompleteQuestEvent => m_completeQuestEvent;
+
     public List<QuestState> ActiveQuestStates => GameManager.ActiveState.ActiveQuests;
     public List<QuestState> CompletedQuestStates => GameManager.ActiveState.CompletedQuests;
 
     private List<QuestState> m_completedQuestBuffer = new();
+
+    protected override void Awake()
+    {
+        base.Awake();
+        m_assignQuestEvent = new();
+        m_completeQuestEvent = new();
+    }
 
     private void Update()
     {
@@ -90,6 +104,7 @@ public class QuestManager : RegistryController<Quest>
         if (!IsIdRegistered(questID)) return false;
 
         ActiveQuestStates.Add(new QuestState(m_registry[questID]));
+        m_assignQuestEvent.Invoke(questID);
         return true;
     }
 
@@ -102,7 +117,7 @@ public class QuestManager : RegistryController<Quest>
         ActiveQuestStates.Remove(qs);
 
         ProcessRewards(m_registry[questID]);
-
+        m_completeQuestEvent.Invoke(questID);
         return true;
     }
 
