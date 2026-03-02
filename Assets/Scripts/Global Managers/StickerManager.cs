@@ -1,9 +1,18 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class StickerManager : RegistryController<Sticker>
 {
+    private UnityEvent<string> m_obtainStickerEvent;
+    public UnityEvent<string> ObtainStickerEvent => m_obtainStickerEvent;
     public List<string> ObtainedStickerIDs => GameManager.ActiveState.ObtainedStickerIDs;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        m_obtainStickerEvent = new();
+    }
 
     public bool HasSticker(string stickerID)
     {
@@ -21,6 +30,7 @@ public class StickerManager : RegistryController<Sticker>
         }
 
         ObtainedStickerIDs.Add(stickerID);
+        m_obtainStickerEvent.Invoke(stickerID);
         return true;
     }
 }
