@@ -1,11 +1,9 @@
 using System;
 using System.Collections.Generic;
-using System.Numerics;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
 
 public class GenerateSign : MonoBehaviour
 {
@@ -13,26 +11,6 @@ public class GenerateSign : MonoBehaviour
     public GameObject signGraphic;
     public float signDisplacement;
     public float signTop;
-
-    public enum SignType
-    {
-        GREEN,
-        BLUE,
-        BLACK,
-        DOUBLEBLACK,
-        SKIPATROL,
-        FOOD
-    }
-
-    private Dictionary<SignType, Color> signTypeColors = new Dictionary<SignType, Color>
-    {
-        {SignType.GREEN, Color.forestGreen},
-        {SignType.BLUE, Color.royalBlue},
-        {SignType.BLACK, Color.black},
-        {SignType.DOUBLEBLACK, Color.black},
-        {SignType.SKIPATROL, Color.darkRed},
-        {SignType.FOOD, Color.saddleBrown},
-    };
 
     [Serializable]
     public struct SignInfo
@@ -51,26 +29,36 @@ public class GenerateSign : MonoBehaviour
         foreach (SignInfo sign in signs)
         {
             GameObject panel = Instantiate(signPanel, this.transform);
-            panel.transform.localScale = panel.transform.localScale / this.transform.localScale.x;
-            panel.transform.position = panel.transform.position + new UnityEngine.Vector3(0, signTop - (signDisplacement * signNum), 0.1f);
+            //panel.transform.localScale = panel.transform.localScale / this.transform.localScale.x;
+            panel.transform.position = panel.transform.position + new UnityEngine.Vector3(0, signTop * transform.localScale.x - (signDisplacement * signNum * transform.localScale.x), 0.06f * transform.localScale.x) / 40;
 
             GameObject graphic = Instantiate(signGraphic, this.transform);
-            graphic.transform.localScale = graphic.transform.localScale / this.transform.localScale.x;
-            graphic.transform.position = graphic.transform.position + new UnityEngine.Vector3(0, signTop - (signDisplacement * signNum), 0.15f);
+            //graphic.transform.localScale = graphic.transform.localScale / this.transform.localScale.x;
+            graphic.transform.position = graphic.transform.position + new UnityEngine.Vector3(0, signTop * transform.localScale.x - (signDisplacement * signNum * transform.localScale.x ), 0.09f * transform.localScale.x) / 40;
 
             TextMeshProUGUI signText = graphic.GetComponentInChildren<TextMeshProUGUI>();
 
             signText.SetText(sign.text);
 
-            UnityEngine.UI.Image[] images = graphic.GetComponentsInChildren<UnityEngine.UI.Image>();
+            Image[] images = graphic.GetComponentsInChildren<Image>();
             int i = 0;
-            foreach (UnityEngine.UI.Image image in images)
+            foreach (Image image in images)
             {
                 if (i == 0)
                 {
-                    image.color = signTypeColors.GetValueOrDefault(sign.signType);
-                    i++;
+                    image.color = sign.signType.color;
                 }
+                if (i == 2)
+                {
+                    Vector3 angle = image.transform.eulerAngles;
+                    image.transform.rotation = Quaternion.Euler(new(angle.x, angle.y, sign.direction));
+                }
+                if (i == 4)
+                {
+                    image.sprite = sign.signType.icon;
+                    image.color = sign.signType.color;
+                }
+                i++;
             }
 
             signNum++;
