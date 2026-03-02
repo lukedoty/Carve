@@ -476,6 +476,8 @@ MonoBehaviour:
   m_assignQuestHeader: New Quest!
   m_completeQuestHeader: Quest Complete!
   m_notificationPrefab: {fileID: 2968711557340515860, guid: b639448582aaf334a9096e43a1dd2b82, type: 3}
+  m_notificationRoot: {x: -225, y: -75}
+  m_notificationSpacing: 125
 --- !u!114 &1678769108
 MonoBehaviour:
   m_ObjectHideFlags: 0
