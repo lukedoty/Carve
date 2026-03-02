@@ -46,7 +46,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94f863dbf32fa3c4e87320c1f15ec06d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GenerateSign
-  signPanel: {fileID: 4493585093827132993, guid: 2b014cdb1450aff4496770ad50d7cfb7, type: 3}
+  signPanel: {fileID: 2591529014030678345, guid: 788c5bef31da9a54995aebe226519534, type: 3}
+  signGraphic: {fileID: 3036393045647447528, guid: ebbcdfa9bc1155448b4b1ae40f6d099a, type: 3}
+  signDisplacement: 0.3
+  signTop: 1
   signs: []
 --- !u!33 &347049312804739844
 MeshFilter:
