@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Quest
   m_questID: play-5-seconds-quest
   m_name: Play For 5 Seconds
-  m_description: 
+  m_description: You gotta play the game for 5 seconds! I'm making this text a couple
+    sentences so I can see what a longer description looks like. Don't worry about
+    it.
   m_criteria:
   - {fileID: 11400000, guid: 10f6793b77bfe224f991fe00ee25ebf9, type: 2}
   m_rewards:
