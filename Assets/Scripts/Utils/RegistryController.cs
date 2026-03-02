@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RegistryController<T> : MonoBehaviour where T : IRegisterable
+public abstract class RegistryController<T> : MonoBehaviour where T : IRegisterable
 {
     [SerializeField]
     protected List<T> m_registryList;
@@ -16,9 +16,7 @@ public class RegistryController<T> : MonoBehaviour where T : IRegisterable
         {
             if (item == null) continue;
             if (m_registryList.FindAll(x => x != null && x.ID == item.ID).Count > 1)
-            {
                 Debug.LogError($"An item with the same ID \"{item.ID}\" has already been added to this Registry.");
-            }
         }
     }
 

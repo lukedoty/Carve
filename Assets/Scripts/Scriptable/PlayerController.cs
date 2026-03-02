@@ -76,6 +76,7 @@ public class PlayerController : MonoBehaviour
         rb.AddForce(-r * (sideSpeed * skateSideDamp), ForceMode.Acceleration);
     }
     #endregion
+
     #region Skiing Logic
     private void MovementSkiing(Vector3 groundNormal)
     {
@@ -150,7 +151,6 @@ public class PlayerController : MonoBehaviour
         return mu * gN / denom;
     }
     #endregion
-
 
     #region Math/Helpers
     private Vector3 GetVelocity()
@@ -308,7 +308,6 @@ public class PlayerController : MonoBehaviour
         );
     }
     #endregion
-
 
     #region Grounded Checks
     private bool Grounded(out Vector3 groundNormal)
