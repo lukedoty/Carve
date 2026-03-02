@@ -13,29 +13,37 @@ public class GenerateSign : MonoBehaviour
     public GameObject signGraphic;
     public float signDisplacement;
     public float signTop;
+
+    public enum SignType
+    {
+        GREEN,
+        BLUE,
+        BLACK,
+        DOUBLEBLACK,
+        SKIPATROL,
+        FOOD
+    }
+
+    private Dictionary<SignType, Color> signTypeColors = new Dictionary<SignType, Color>
+    {
+        {SignType.GREEN, Color.forestGreen},
+        {SignType.BLUE, Color.royalBlue},
+        {SignType.BLACK, Color.black},
+        {SignType.DOUBLEBLACK, Color.black},
+        {SignType.SKIPATROL, Color.darkRed},
+        {SignType.FOOD, Color.saddleBrown},
+    };
+
     [Serializable]
     public struct SignInfo
     {
-        public string text;
-        public SignType signType;
+        public string text; // Slope/Feature name
+        public SignType signType; // Determines color and icon
         [Range (0,359)]
-        public int direction;
+        public int direction; // Rotation of the arrow in degrees
     }
-    public int test;
-    public Dictionary<SignType, Color> signTypeColors;
 
     public List<SignInfo> signs;
-
-    void OnDrawGizmosSelected()
-    {
-        // int signNum = 0;
-        // foreach (SignInfo sign in signs)
-        // {
-        //     Gizmos.color = Color.green;
-        //     Gizmos.DrawCube(new(transform.position.x + 0, transform.position.y + signTop - (signDisplacement * signNum), transform.position.z + 0.1f), UnityEngine.Vector3.one);
-        //     signNum++;
-        // }
-    }
   
     void Start()
     {
@@ -51,9 +59,19 @@ public class GenerateSign : MonoBehaviour
             graphic.transform.position = graphic.transform.position + new UnityEngine.Vector3(0, signTop - (signDisplacement * signNum), 0.15f);
 
             TextMeshProUGUI signText = graphic.GetComponentInChildren<TextMeshProUGUI>();
+
             signText.SetText(sign.text);
 
-
+            UnityEngine.UI.Image[] images = graphic.GetComponentsInChildren<UnityEngine.UI.Image>();
+            int i = 0;
+            foreach (UnityEngine.UI.Image image in images)
+            {
+                if (i == 0)
+                {
+                    image.color = signTypeColors.GetValueOrDefault(sign.signType);
+                    i++;
+                }
+            }
 
             signNum++;
         }
