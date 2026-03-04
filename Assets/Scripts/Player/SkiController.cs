@@ -34,8 +34,8 @@ public class SkiController : MonoBehaviour
         set { m_turn = Mathf.Clamp(value, -1, 1); }
     }
 
-    [SerializeField]
-    private float m_momentumBoostFactor = 0.75f;
+    //[SerializeField]
+    //private float m_momentumBoostFactor = 0.75f;
 
     private Vector3 m_vel;
     public Vector3 Velocity => m_vel;

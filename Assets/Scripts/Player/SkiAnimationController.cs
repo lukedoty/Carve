@@ -16,8 +16,8 @@ public class SkiAnimationController : MonoBehaviour
     [Header("Settings")]
     [SerializeField]
     private float m_maxEdgeControlAngle = 45;
-    [SerializeField]
-    private float m_redirectionCeiling = 100;
+    //[SerializeField]
+    //private float m_redirectionCeiling = 100;
 
     private SkiController m_controller;
 
