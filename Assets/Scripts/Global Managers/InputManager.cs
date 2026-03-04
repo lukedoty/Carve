@@ -33,6 +33,7 @@ public readonly struct PlayerActions
     public readonly InputAction Move;
     public readonly InputAction Look;
     public readonly InputAction Jump;
+    public readonly InputAction EdgeControl;
 
     public PlayerActions(InputActionMap playerMap)
     {
@@ -40,6 +41,7 @@ public readonly struct PlayerActions
         Move = playerMap.FindAction("Move", true);
         Look = playerMap.FindAction("Look", true);
         Jump = playerMap.FindAction("Jump", true);
+        EdgeControl = playerMap.FindAction("Edge Control", true);
     }
 
     public readonly bool Enabled => PlayerMap.enabled;
@@ -52,6 +54,7 @@ public struct PlayerInput
     public Vector2 Move { get; private set; }
     public Vector2 Look { get; private set; }
     public bool Jump { get; private set; }
+    public float EdgeControl { get; private set; }
 
     public void Update(PlayerActions playerActions)
     {
@@ -60,5 +63,6 @@ public struct PlayerInput
         Move = playerActions.Move.ReadValue<Vector2>();
         Look = playerActions.Look.ReadValue<Vector2>();
         Jump = playerActions.Jump.IsPressed();
+        EdgeControl = playerActions.EdgeControl.ReadValue<float>();
     }
 }

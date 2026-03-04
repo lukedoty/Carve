@@ -1,12 +1,12 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class PlayerController : MonoBehaviour
+public class PlayerControllerDepricated : MonoBehaviour
 {
     [SerializeField] private Transform skisVisual;
 
     [Header("General")]
-    [SerializeField] private float jumpForce = 7f;
+//    [SerializeField] private float jumpForce = 7f;
     [SerializeField] private float skiSpeed = 15f;
     [SerializeField] private float yawSpeedDeg = 90f;
 
@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        inputManager = FindFirstObjectByType<InputManager>();
+        inputManager = GameManager.Input;
         rb = GetComponent<Rigidbody>();
         capsule = GetComponentInChildren<CapsuleCollider>();
     }
