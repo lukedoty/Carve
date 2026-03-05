@@ -33,10 +33,11 @@ public class SkiAnimationController : MonoBehaviour
         Vector3 groundNormal = m_controller.LastGroundedGroundNormal;
 
         Vector3 skisForward = Vector3.ProjectOnPlane(m_model.forward, groundNormal).normalized;
-        m_skis.rotation = Quaternion.LookRotation(skisForward, groundNormal);
+        Quaternion targetAlignmentRotation = Quaternion.LookRotation(skisForward, groundNormal);
+        m_skis.rotation = Quaternion.Lerp(m_skis.rotation, targetAlignmentRotation, 0.1f); // TODO: replace with robust animation and interpolation
 
         // EDGE ALIGNMENT
-       
+
         //float redirectionStep;
         //if (m_controller.Velocity.sqrMagnitude > m_controller.StaticFrictionCutoffSpeed * m_controller.StaticFrictionCutoffSpeed)
         //{
@@ -48,11 +49,11 @@ public class SkiAnimationController : MonoBehaviour
         //}
         //float redirection = redirectionStep / Time.deltaTime;
         //float redirectionComponent = Mathf.Clamp(redirection / m_redirectionCeiling, -1, 1);
-        
+
         Vector3 downhillOrthogonal = Vector3.Cross(groundNormal, Vector3.up).normalized;
         float downhillComponent = Vector3.Dot(skisForward, downhillOrthogonal);
 
-        float edgeControlComponent = m_controller.EdgeControl;
+        float edgeControlComponent = m_controller.EdgeControlOverride ? 1.0f : m_controller.EdgeControl;
 
         float groundedComponent = m_controller.IsGrounded ? 1 : 0;
 
