@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using TMPro;
+using UnityEngine.Events;
 
 public class NotificationController : MonoBehaviour
 {
@@ -21,18 +22,33 @@ public class NotificationController : MonoBehaviour
     [SerializeField]
     private string m_completeQuestHeader;
 
+    private UnityAction<string> m_assignQuestListener;
+    private UnityAction<string> m_completeQuestListener;
+    private UnityAction<string> m_obtainStickerListener;
+
     private List<Notification> m_notifications;
 
     private void Awake()
     {
+        m_assignQuestListener = (id) => InstantiateNotification(NotificationType.AssignQuest, id);
+        m_completeQuestListener = (id) => InstantiateNotification(NotificationType.CompleteQuest, id);
+        m_obtainStickerListener = (id) => InstantiateNotification(NotificationType.ObtainSticker, id);
+
         m_notifications = new();
     }
 
     private void Start()
     {
-        GameManager.Quest.AssignQuestEvent.AddListener((id) => InstantiateNotification(NotificationType.AssignQuest, id));
-        GameManager.Quest.CompleteQuestEvent.AddListener((id) => InstantiateNotification(NotificationType.CompleteQuest, id));
-        GameManager.Sticker.ObtainStickerEvent.AddListener((id) => InstantiateNotification(NotificationType.ObtainSticker, id));
+        GameManager.Quest.AssignQuestEvent.AddListener(m_assignQuestListener);
+        GameManager.Quest.CompleteQuestEvent.AddListener(m_completeQuestListener);
+        GameManager.Sticker.ObtainStickerEvent.AddListener(m_obtainStickerListener);
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.Quest.AssignQuestEvent.RemoveListener(m_assignQuestListener);
+        GameManager.Quest.CompleteQuestEvent.RemoveListener(m_completeQuestListener);
+        GameManager.Sticker.ObtainStickerEvent.RemoveListener(m_obtainStickerListener);
     }
 
     private void Update()

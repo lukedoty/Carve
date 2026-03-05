@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Example Sticker
   m_EditorClassIdentifier: Assembly-CSharp::Sticker
   m_stickerID: example-sticker
+  m_name: Example Sticker
   m_stickerImage: {fileID: 2800000, guid: e66807b1230b53045a05b7944a65e459, type: 3}
