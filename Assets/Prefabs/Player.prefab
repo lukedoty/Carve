@@ -187,9 +187,9 @@ MonoBehaviour:
   m_turn: 0
   m_turnSpeed: 120
   m_edgeControlOverride: 0
-  m_turnOverrideMaxAngle: 100
+  m_turnOverrideMaxAngle: 98
   m_skate: 0
-  m_skateForce: 2.5
+  m_skateForce: 2
   m_skateSlopeLimit: 10
   m_staticFrictionCutoffSpeed: 0.02
   m_parallelFriction: 0.075
@@ -337,7 +337,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SkiCamController
   m_controller: {fileID: 5206341332757346693}
   m_lookOffset: {x: 0, y: 1.25, z: 0}
-  m_freeRotationSpeedThreshold: 5
 --- !u!81 &3270855743505791227
 AudioListener:
   m_ObjectHideFlags: 0
