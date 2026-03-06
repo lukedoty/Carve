@@ -1,49 +1,36 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class StickerManager : MonoBehaviour
+public class StickerManager : RegistryController<Sticker>
 {
-    [SerializeField]
-    private List<Sticker> m_stickerRegistry;
-    private Dictionary<string, Sticker> m_stickerRegistryDict;
-    public Dictionary<string, Sticker> StickerRegistry => m_stickerRegistryDict;
-
+    private UnityEvent<string> m_obtainStickerEvent;
+    public UnityEvent<string> ObtainStickerEvent => m_obtainStickerEvent;
     public List<string> ObtainedStickerIDs => GameManager.ActiveState.ObtainedStickerIDs;
 
-    public void OnValidate()
+    protected override void Awake()
     {
-        foreach (Sticker s in m_stickerRegistry)
-        {
-            if (s == null) continue;
-            if (m_stickerRegistry.FindAll(x => x != null && x.StickerID == s.StickerID).Count > 1)
-            {
-                Debug.LogError($"A sticker with the same ID \"{s.StickerID}\" has already been added to the StickerManager's Sticker list.");
-            }
-        }
+        base.Awake();
+        m_obtainStickerEvent = new();
     }
 
-    private void Awake()
+    public bool HasSticker(string stickerID)
     {
-        m_stickerRegistryDict = new Dictionary<string, Sticker>();
-
-        foreach (Sticker s in m_stickerRegistry)
-        {
-            if (m_stickerRegistryDict.ContainsKey(s.StickerID)) continue;
-            m_stickerRegistryDict.Add(s.StickerID, s);
-        }
+        if (!IsIdRegistered(stickerID)) return false;
+        return ObtainedStickerIDs.Contains(stickerID);
     }
 
-    public bool AwardSticker(string id)
+    public bool ObtainSticker(string stickerID)
     {
-        if (!m_stickerRegistryDict.ContainsKey(id)) return false;
-        if (HasObtainedSticker(id)) return false;
+        if (!IsIdRegistered(stickerID)) return false;
+        if (HasSticker(stickerID))
+        {
+            Debug.LogError($"The sticker with ID \"{stickerID}\" has already been obtained.");
+            return false;
+        }
 
-        ObtainedStickerIDs.Add(id);
+        ObtainedStickerIDs.Add(stickerID);
+        m_obtainStickerEvent.Invoke(stickerID);
         return true;
-    }
-
-    public bool HasObtainedSticker(string id)
-    {
-        return ObtainedStickerIDs.Contains(id);
     }
 }

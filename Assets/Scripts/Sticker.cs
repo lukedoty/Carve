@@ -2,12 +2,17 @@ using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Sticker Asset", menuName = "Scriptable Objects/Sticker Asset")]
-public class Sticker : ScriptableObject
+public class Sticker : ScriptableObject, IRegisterable
 {
     [SerializeField]
     private string m_stickerID;
-    public string StickerID => m_stickerID;
+    public string ID => m_stickerID;
+
     [SerializeField]
-    private Image m_stickerImage;
-    public Image StickerImage => m_stickerImage;
+    private string m_name;
+    public string Name => m_name;
+
+    [SerializeField]
+    private Texture2D m_stickerImage;
+    public Texture2D StickerImage => m_stickerImage;
 }
