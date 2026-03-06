@@ -4,14 +4,14 @@ using UnityEngine.EventSystems;
 public class SceneChanger : MonoBehaviour
 {
 
-    public void goToScene(string sceneName)
+    public void GoToScene(string sceneName)
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
+        GameManager.Scene.LoadSceneAndSwap(sceneName);
     }
 
     public void QuitApplication()
     {
-        Application.Quit();
+        GameManager.Scene.QuitApplication();
     }
 
     public void TriggerSwitchToSettings(Animation anim)
