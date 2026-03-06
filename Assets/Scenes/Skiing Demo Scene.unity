@@ -1636,10 +1636,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 499678052177161656, guid: 9a8a9b26717e6a94fa188addb676d903, type: 3}
-      propertyPath: m_freeRotationSkatingSpeedLimitMult
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 1129974995081401060, guid: 9a8a9b26717e6a94fa188addb676d903, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1683,14 +1679,6 @@ PrefabInstance:
     - target: {fileID: 3983838936169664047, guid: 9a8a9b26717e6a94fa188addb676d903, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206341332757346693, guid: 9a8a9b26717e6a94fa188addb676d903, type: 3}
-      propertyPath: m_skateForce
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206341332757346693, guid: 9a8a9b26717e6a94fa188addb676d903, type: 3}
-      propertyPath: m_turnOverrideMaxAngle
-      value: 98
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
