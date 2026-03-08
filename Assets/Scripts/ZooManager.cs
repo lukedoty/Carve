@@ -32,10 +32,7 @@ public class ZooManagerEditor : Editor
 
     public override void OnInspectorGUI()
     {
-        serializedObject.Update();
-        EditorGUILayout.PropertyField(m_path);
-        EditorGUILayout.PropertyField(m_spacing);
-        serializedObject.ApplyModifiedProperties();
+        base.OnInspectorGUI();
 
         ZooManager zooManager = (ZooManager)target;
         if (GUILayout.Button("Generate Zoo")) GenerateZoo(zooManager);
@@ -43,7 +40,6 @@ public class ZooManagerEditor : Editor
 
     private void GenerateZoo(ZooManager zooManager)
     {
-
         while (zooManager.transform.childCount > 0)
         {
             DestroyImmediate(zooManager.transform.GetChild(0).gameObject);
