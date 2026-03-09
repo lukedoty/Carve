@@ -1,5 +1,8 @@
-using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 [CreateAssetMenu(fileName = "New Sticker Asset", menuName = "Scriptable Objects/Sticker Asset")]
 public class Sticker : ScriptableObject, IRegisterable
@@ -16,3 +19,8 @@ public class Sticker : ScriptableObject, IRegisterable
     private Texture2D m_stickerImage;
     public Texture2D StickerImage => m_stickerImage;
 }
+
+#if UNITY_EDITOR
+[CustomEditor(typeof(Sticker))]
+public class StickerEditor : RegisterableEditor<Sticker, StickerManager> { }
+#endif

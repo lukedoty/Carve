@@ -1,6 +1,9 @@
 using MessagePack;
 using UnityEngine;
-using System.Collections.Generic;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 [CreateAssetMenu(fileName = "New Quest Asset", menuName = "Scriptable Objects/Quest Asset")]
 public class Quest : ScriptableObject, IRegisterable
@@ -32,7 +35,7 @@ public class QuestState
     [Key(0)]
     public string QuestID;
     [Key(1)]
-    public List<int> PassedCriteriaIndices;
+    public bool[] PassedCriteria;
 
     public QuestState() { }
 
@@ -40,10 +43,15 @@ public class QuestState
     {
         QuestID = q.ID;
 
-        PassedCriteriaIndices = new();
+        PassedCriteria = new bool[q.Criteria.Length];
         for (int i = 0; i < q.Criteria.Length; i++)
         {
-            if (q.Criteria[i].Check()) PassedCriteriaIndices.Add(i);
+            if (q.Criteria[i].Check()) PassedCriteria[i] = true;
         }
     }
 }
+
+#if UNITY_EDITOR
+[CustomEditor(typeof(Quest))]
+public class QuestEditor : RegisterableEditor<Quest, QuestManager> { }
+#endif
