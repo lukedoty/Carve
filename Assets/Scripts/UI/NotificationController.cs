@@ -1,20 +1,10 @@
 using UnityEngine;
+using UnityEngine.Events;
 using System.Collections.Generic;
 using TMPro;
-using UnityEngine.Events;
 
 public class NotificationController : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject m_notificationPrefab;
-
-    [SerializeField]
-    private Vector2 m_notificationRoot = new(-225, -75);
-    [SerializeField]
-    private float m_notificationSpacing;
-    [SerializeField]
-    private float m_notificationLifetime = 5f;
-
     [SerializeField]
     private string m_obtainStickerHeader;
     [SerializeField]
@@ -22,54 +12,42 @@ public class NotificationController : MonoBehaviour
     [SerializeField]
     private string m_completeQuestHeader;
 
-    private UnityAction<string> m_assignQuestListener;
-    private UnityAction<string> m_completeQuestListener;
-    private UnityAction<string> m_obtainStickerListener;
+    [SerializeField]
+    private GameObject m_notificationPrefab;
 
-    private List<Notification> m_notifications;
+    [SerializeField]
+    private float m_notificationRoot = -75;
+    [SerializeField]
+    private float m_notificationSpacing;
+
+    private List<GameObject> m_notifications;
+
+    private enum NotificationType
+    {
+        ObtainSticker,
+        AssignQuest,
+        CompleteQuest
+    }
 
     private void Awake()
     {
-        m_assignQuestListener = (id) => InstantiateNotification(NotificationType.AssignQuest, id);
-        m_completeQuestListener = (id) => InstantiateNotification(NotificationType.CompleteQuest, id);
-        m_obtainStickerListener = (id) => InstantiateNotification(NotificationType.ObtainSticker, id);
-
         m_notifications = new();
     }
 
     private void Start()
     {
-        GameManager.Quest.AssignQuestEvent.AddListener(m_assignQuestListener);
-        GameManager.Quest.CompleteQuestEvent.AddListener(m_completeQuestListener);
-        GameManager.Sticker.ObtainStickerEvent.AddListener(m_obtainStickerListener);
-    }
-
-    private void OnDestroy()
-    {
-        GameManager.Quest.AssignQuestEvent.RemoveListener(m_assignQuestListener);
-        GameManager.Quest.CompleteQuestEvent.RemoveListener(m_completeQuestListener);
-        GameManager.Sticker.ObtainStickerEvent.RemoveListener(m_obtainStickerListener);
+        GameManager.Quest.AssignQuestEvent.AddListener((id) => InstantiateNotification(NotificationType.AssignQuest, id));
+        GameManager.Quest.CompleteQuestEvent.AddListener((id) => InstantiateNotification(NotificationType.CompleteQuest, id));
+        GameManager.Sticker.ObtainStickerEvent.AddListener((id) => InstantiateNotification(NotificationType.ObtainSticker, id));
     }
 
     private void Update()
     {
-        for (int i = m_notifications.Count - 1; i >= 0; i--)
+        for (int i = 0; i < m_notifications.Count; i++ )
         {
-            Notification notification = m_notifications[i];
-
-            RectTransform rt = notification.Obj.GetComponent<RectTransform>();
-            rt.anchoredPosition = m_notificationRoot + (i * m_notificationSpacing * Vector2.down);
-
-            notification.Duration -= Time.deltaTime;
-
-            if (notification.Duration <= 0)
-            {
-                m_notifications.RemoveAt(i);
-                Destroy(notification.Obj);
-            } else
-            {
-                m_notifications[i] = notification;
-            }
+            GameObject notification = m_notifications[i];
+            RectTransform rt = notification.GetComponent<RectTransform>();
+            //rt.anchoredPosition.y = m_notificationRoot - m_notificationSpacing * i;
         }
     }
 
@@ -95,25 +73,8 @@ public class NotificationController : MonoBehaviour
                 break;
         }
 
-        m_notifications.Insert(0, new Notification(notification, m_notificationLifetime));
+        m_notifications.Insert(0, notification);
     }
 
-    private enum NotificationType
-    {
-        ObtainSticker,
-        AssignQuest,
-        CompleteQuest
-    }
 
-    private struct Notification
-    {
-        public Notification(GameObject obj, float duration)
-        {
-            Obj = obj;
-            Duration = duration;
-        }
-
-        public GameObject Obj { get; set; }
-        public float Duration { get; set; }
-    }
 }

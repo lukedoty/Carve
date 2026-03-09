@@ -1,6 +1,0 @@
-<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/MainmenuStyle.uss?fileID=7433441132597879392&amp;guid=44913a3e7de7642768e0deb317d91355&amp;type=3"/>
-    <ui:VisualElement name="container" style="flex-grow: 1; border-top-color: rgba(0, 0, 0, 0); border-left-color: rgba(0, 0, 0, 0); border-right-color: rgba(0, 0, 0, 0); border-bottom-color: rgba(0, 0, 0, 0); background-image: url(&quot;project://database/Assets/Art%20Assets/2D/UI/MainMenu/UI%20-%20Main%20Menu-2.png?fileID=2800000&amp;guid=c857c7d7c52204e178b90232b853857a&amp;type=3#UI - Main Menu-2&quot;); width: auto; height: auto; position: relative;">
-        <ui:Button text="Button" class="button" style="height: auto; width: auto; aspect-ratio: 3; bottom: auto;"/>
-    </ui:VisualElement>
-</ui:UXML>

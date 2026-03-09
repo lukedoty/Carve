@@ -60,9 +60,9 @@ public class QuestManager : RegistryController<Quest>
 
         for (int i = 0; i < criteria.Length; i++)
         {
-            if (q.PassedCriteria[i]) continue;
+            if (q.PassedCriteriaIndices.Contains(i)) continue;
 
-            if (criteria[i].Check()) q.PassedCriteria[i] = true;
+            if (criteria[i].Check()) q.PassedCriteriaIndices.Add(i);
             else questComplete = false;
         }
 
