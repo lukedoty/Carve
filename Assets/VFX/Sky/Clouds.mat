@@ -91,7 +91,7 @@ Material:
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
-    - _Cloud_Speed: 0.003
+    - _Cloud_Speed: 0.0013
     - _Clouds: 100
     - _Cull: 2
     - _Cutoff: 0.5
@@ -99,7 +99,7 @@ Material:
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _Distortion: 100
-    - _Distortion_Speed: 0.003
+    - _Distortion_Speed: 0.0013
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
