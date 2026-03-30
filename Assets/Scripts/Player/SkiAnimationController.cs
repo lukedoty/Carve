@@ -53,7 +53,7 @@ public class SkiAnimationController : MonoBehaviour
         Vector3 downhillOrthogonal = Vector3.Cross(groundNormal, Vector3.up).normalized;
         float downhillComponent = Vector3.Dot(skisForward, downhillOrthogonal);
 
-        float edgeControlComponent = m_controller.EdgeControlOverride ? 1.0f : m_controller.EdgeControl;
+        float edgeControlComponent = m_controller.IsPowerStopping ? 1.0f : m_controller.EdgeControlInput;
 
         float groundedComponent = m_controller.IsGrounded ? 1 : 0;
 
