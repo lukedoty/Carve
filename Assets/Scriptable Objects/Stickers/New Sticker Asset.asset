@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94e861ba591379d4f9679f86dd5ea134, type: 3}
   m_Name: New Sticker Asset
   m_EditorClassIdentifier: Assembly-CSharp::Sticker
-  m_stickerID: 
+  m_stickerID: example-sticker
   m_name: 
   m_stickerImage: {fileID: 0}

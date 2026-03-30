@@ -34,7 +34,7 @@ public readonly struct PlayerActions
     public readonly InputAction Look;
     public readonly InputAction Jump;
     public readonly InputAction EdgeControl;
-    public readonly InputAction EdgeControlOverride;
+    public readonly InputAction PowerStop;
 
     public PlayerActions(InputActionMap playerMap)
     {
@@ -43,7 +43,7 @@ public readonly struct PlayerActions
         Look = playerMap.FindAction("Look", true);
         Jump = playerMap.FindAction("Jump", true);
         EdgeControl = playerMap.FindAction("Edge Control", true);
-        EdgeControlOverride = playerMap.FindAction("Edge Control Override", true);
+        PowerStop = playerMap.FindAction("Power Stop", true);
     }
 
     public readonly bool Enabled => PlayerMap.enabled;
@@ -57,7 +57,7 @@ public struct PlayerInput
     public Vector2 Look { get; private set; }
     public bool Jump { get; private set; }
     public float EdgeControl { get; private set; }
-    public bool EdgeControlOverride { get; private set; }
+    public bool PowerStop { get; private set; }
 
     public void Update(PlayerActions playerActions)
     {
@@ -67,6 +67,6 @@ public struct PlayerInput
         Look = playerActions.Look.ReadValue<Vector2>();
         Jump = playerActions.Jump.IsPressed();
         EdgeControl = playerActions.EdgeControl.ReadValue<float>();
-        EdgeControlOverride = playerActions.EdgeControlOverride.IsPressed();
+        PowerStop = playerActions.PowerStop.IsPressed();
     }
 }

@@ -43,7 +43,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Edge Control Override",
+                    "name": "Power Stop",
                     "type": "Button",
                     "id": "99190f2b-2d9d-403e-962b-8110e690936f",
                     "expectedControlType": "",
@@ -247,7 +247,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",
-                    "action": "Edge Control Override",
+                    "action": "Power Stop",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -258,7 +258,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Edge Control Override",
+                    "action": "Power Stop",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -719,6 +719,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "XR",
+                    "action": "Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0f5ba015-ec06-42b9-9881-694310f88a5c",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
                     "action": "Click",
                     "isComposite": false,
                     "isPartOfComposite": false
