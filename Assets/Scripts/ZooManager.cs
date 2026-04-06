@@ -58,9 +58,9 @@ public class ZooManagerEditor : Editor
             foreach (MeshFilter mf in meshFilters) bounds.Encapsulate(mf.sharedMesh.bounds);
 
             float halfWidth = bounds.extents.z / 2;
-            pos += (m_spacing.floatValue + halfWidth) * Vector3.forward;
+            pos += (m_spacing.floatValue + halfWidth) * Vector3.right;
             obj.transform.position = pos;
-            pos += halfWidth * Vector3.forward;
+            pos += halfWidth * Vector3.right;
 
             EditorUtility.SetDirty(obj);
         }

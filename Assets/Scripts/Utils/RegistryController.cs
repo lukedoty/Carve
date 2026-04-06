@@ -40,9 +40,16 @@ public abstract class RegistryController<T> : MonoBehaviour
         }
     }
 
-    protected virtual bool IsIdRegistered(string id)
+    public virtual bool IsIdRegistered(string id)
     {
-        if (m_registry.ContainsKey(id)) return true;
+        if (m_registry == null)
+        {
+            if (m_registryList.Find(x => x != null && x.ID == id) != null) return true;
+        }
+        else
+        {
+            if (m_registry.ContainsKey(id)) return true;
+        }
 
         Debug.LogError($"This Registry does not contain an item with ID \"{id}\".");
         return false;
