@@ -1271,7 +1271,7 @@ MonoBehaviour:
   - {fileID: 4994544012667206691}
   - {fileID: 2274824834489489826}
   verboseLogging: 0
-  autoStart: 0
+  autoStart: 1
   startNode: Start
   runSelectedOptionAsLine: 0
   allowOptionFallthrough: 1
