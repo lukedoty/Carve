@@ -137,3 +137,8 @@ MonoBehaviour:
   m_registryList:
   - {fileID: 11400000, guid: 93766c3b5a989f74abfab134678bff76, type: 2}
   - {fileID: 11400000, guid: 3e1c8dd595c4e834e95a878963bc10fa, type: 2}
+  - {fileID: 11400000, guid: 185f5f3f0d426d14bb76fbff89b1cf4f, type: 2}
+  - {fileID: 11400000, guid: a51cf4a39997e004f87d1d8ae8688f31, type: 2}
+  - {fileID: 11400000, guid: 2b515c8bf50704142abf0dbf66eaba20, type: 2}
+  - {fileID: 11400000, guid: f2460af729f737448abcc1412919d2ea, type: 2}
+  - {fileID: 11400000, guid: d4fb8d458a2831b4bb2548b7167041bc, type: 2}
