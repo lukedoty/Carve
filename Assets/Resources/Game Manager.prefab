@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fc497a9882304c418512e67e84649da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InputManager
-  m_inputActions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  m_inputActions: {fileID: -944628639613478452, guid: 6797721cfbaca7ae4ba929680f1702e1, type: 3}
 --- !u!114 &6593169654364117274
 MonoBehaviour:
   m_ObjectHideFlags: 0
