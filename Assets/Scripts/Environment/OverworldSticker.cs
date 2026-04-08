@@ -8,6 +8,7 @@ using System.Data.Common;
 [RequireComponent(typeof(Collider))]
 public class OverworldSticker : MonoBehaviour
 {
+    [SerializeField, HideInInspector]
     private string m_stickerID;
 
     public void Start()
@@ -30,7 +31,9 @@ public class OverworldSticker : MonoBehaviour
 
     public void setID(string ID)
     {
+        Debug.Log(ID);
         m_stickerID = ID;
+        Debug.Log(m_stickerID);
     }
 
     void OnTriggerEnter(Collider other)
@@ -46,13 +49,13 @@ public class OverworldSticker : MonoBehaviour
 [CustomEditor(typeof(OverworldSticker))]
 public class OverworldStickerEditor : Editor
 {   
-    string[] IDs = {};
-    int i = 0;
     public override void OnInspectorGUI()
     {
         DrawDefaultInspector();
-        StickerManager stickerManager = FindFirstObjectByType<StickerManager>();
-        List<Sticker> stickerList = stickerManager.RegistryList;
+
+        RegistryController<Sticker> stickerRegistry = Resources.Load<RegistryController<Sticker>>("Game Manager");
+        List<Sticker> stickerList = stickerRegistry.RegistryList;
+        String[] IDs = new string[stickerList.Count];
 
         int j = 0;
         foreach (Sticker sticker in stickerList)
@@ -63,17 +66,20 @@ public class OverworldStickerEditor : Editor
                 j++;
             }
         }
-        OverworldSticker overworldSticker = target as OverworldSticker;
+
+        SerializedProperty overworldSticker = serializedObject.FindProperty("m_stickerID");
+
         if (IDs.Length > 0)
         {
-            i = EditorGUILayout.Popup(i, IDs);
-            overworldSticker.setID(IDs[i]);
-            EditorUtility.SetDirty(target);
+            int i = EditorGUILayout.Popup(Array.IndexOf(IDs, overworldSticker.stringValue), IDs);
+            overworldSticker.stringValue = IDs[i];
         } 
         else
         {
-            overworldSticker.setID("LittleSteppe");
+            overworldSticker.stringValue = "ERROR";
             EditorGUILayout.LabelField("ERROR: Sticker List not found or no stickers contained in the registry.");
         }
+
+        serializedObject.ApplyModifiedProperties();
     }
 }
