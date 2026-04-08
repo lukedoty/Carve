@@ -1,10 +1,4 @@
-using System;
 using System.Collections.Generic;
-<<<<<<< Updated upstream
-using Microsoft.Unity.VisualStudio.Editor;
-=======
-using System.Linq;
->>>>>>> Stashed changes
 using UnityEngine;
 using UnityEditor;
 using Mono.Cecil;
@@ -39,14 +33,6 @@ public class OverworldSticker : MonoBehaviour
         m_stickerID = ID;
     }
 
-    public void OnValidate()
-    {
-        StickerManager stickerManager = FindFirstObjectByType<StickerManager>();
-        if (stickerManager.Registry.ContainsKey(m_stickerID)) return;
-
-        Debug.LogError($"Registry does not contain sticker \"{m_stickerID}\".");
-    }
-
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -59,9 +45,7 @@ public class OverworldSticker : MonoBehaviour
 
 [CustomEditor(typeof(OverworldSticker))]
 public class OverworldStickerEditor : Editor
-{
-
-    
+{   
     string[] IDs = {};
     int i = 0;
     public override void OnInspectorGUI()
