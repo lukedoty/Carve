@@ -8,7 +8,6 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     private static GameManager s_instance;
-    public static GameManager Instance => s_instance;
 
     private SceneManager m_sceneManager;
     public static SceneManager Scene => s_instance.m_sceneManager;

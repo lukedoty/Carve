@@ -61,21 +61,12 @@ public struct PlayerInput
 
     public void Update(PlayerActions playerActions)
     {
-        if (!playerActions.Enabled) return;
+        if (!playerActions.PlayerMap.enabled) return;
 
         Move = playerActions.Move.ReadValue<Vector2>();
         Look = playerActions.Look.ReadValue<Vector2>();
         Jump = playerActions.Jump.IsPressed();
         EdgeControl = playerActions.EdgeControl.ReadValue<float>();
         PowerStop = playerActions.PowerStop.IsPressed();
-    }
-
-    public void ZeroInputs()
-    {
-        Move = Vector2.zero;
-        Look = Vector2.zero;
-        Jump = false;
-        EdgeControl = 0;
-        PowerStop = false;
     }
 }

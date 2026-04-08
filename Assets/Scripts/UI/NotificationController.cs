@@ -2,7 +2,6 @@ using UnityEngine;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine.Events;
-using UnityEngine.UI;
 
 public class NotificationController : MonoBehaviour
 {
@@ -79,15 +78,12 @@ public class NotificationController : MonoBehaviour
         GameObject notification = Instantiate(m_notificationPrefab, transform);
 
         TMP_Text[] text = notification.GetComponentsInChildren<TMP_Text>();
-        RawImage icon = notification.GetComponentInChildren<RawImage>();
         
         switch (type)
         {
             case NotificationType.ObtainSticker:
                 text[0].text = m_obtainStickerHeader;
-                Sticker sticker = GameManager.Sticker.Registry[id];
-                text[1].text = sticker.Name;
-                icon.texture = sticker.StickerImage;
+                text[1].text = GameManager.Sticker.Registry[id].Name;
                 break;
             case NotificationType.AssignQuest:
                 text[0].text = m_assignQuestHeader;
