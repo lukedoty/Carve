@@ -9,8 +9,8 @@ using System.Collections;
 [RequireComponent(typeof(Collider))]
 public class OverworldSticker : MonoBehaviour
 {
-    [SerializeField, HideInInspector]
-    private string m_stickerID;
+    [SerializeField]
+    private RegistryIDSelector<Sticker> m_stickerID;
     private bool m_collected = false;
 
     public void Start()
@@ -29,13 +29,6 @@ public class OverworldSticker : MonoBehaviour
 
         Sprite stickerSprite = GameManager.Sticker.Registry[m_stickerID].StickerImage;
         stickerRenderer.sprite = stickerSprite;
-    }
-
-    public void setID(string ID)
-    {
-        Debug.Log(ID);
-        m_stickerID = ID;
-        Debug.Log(m_stickerID);
     }
 
     void OnTriggerEnter(Collider other)
@@ -67,45 +60,5 @@ public class OverworldSticker : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-}
-
-
-
-[CustomEditor(typeof(OverworldSticker))]
-public class OverworldStickerEditor : Editor
-{   
-    public override void OnInspectorGUI()
-    {
-        DrawDefaultInspector();
-
-        RegistryController<Sticker> stickerRegistry = Resources.Load<RegistryController<Sticker>>("Game Manager");
-        List<Sticker> stickerList = stickerRegistry.RegistryList;
-        String[] IDs = new string[stickerList.Count];
-
-        int j = 0;
-        foreach (Sticker sticker in stickerList)
-        {
-            if (sticker != null)
-            {
-                IDs[j] = sticker.ID;
-                j++;
-            }
-        }
-
-        SerializedProperty overworldSticker = serializedObject.FindProperty("m_stickerID");
-
-        if (IDs.Length > 0)
-        {
-            int i = EditorGUILayout.Popup(Array.IndexOf(IDs, overworldSticker.stringValue), IDs);
-            overworldSticker.stringValue = IDs[i];
-        } 
-        else
-        {
-            overworldSticker.stringValue = "ERROR";
-            EditorGUILayout.LabelField("ERROR: Sticker List not found or no stickers contained in the registry.");
-        }
-
-        serializedObject.ApplyModifiedProperties();
     }
 }
