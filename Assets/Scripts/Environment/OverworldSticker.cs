@@ -4,12 +4,14 @@ using UnityEditor;
 using Mono.Cecil;
 using System;
 using System.Data.Common;
+using System.Collections;
 
 [RequireComponent(typeof(Collider))]
 public class OverworldSticker : MonoBehaviour
 {
     [SerializeField, HideInInspector]
     private string m_stickerID;
+    private bool m_collected = false;
 
     public void Start()
     {
@@ -40,11 +42,35 @@ public class OverworldSticker : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            GameManager.Sticker.ObtainSticker(m_stickerID);
+            if (!m_collected)
+            {
+                StartCoroutine(Collect());
+            }
+        }
+    }
+
+    private IEnumerator Collect()
+    {
+        GameManager.Sticker.ObtainSticker(m_stickerID);
+        Animator animator = GetComponentInChildren<Animator>();
+        if (animator != null)
+        {
+            animator.SetBool("Collected", true);
+            transform.rotation = Camera.main.transform.rotation;
+        } else
+        {
+            Debug.LogError("Sticker animator not found");
+            Destroy(gameObject);
+        }
+        yield return new WaitForSeconds(1);
+        if (gameObject != null)
+        {
             Destroy(gameObject);
         }
     }
 }
+
+
 
 [CustomEditor(typeof(OverworldSticker))]
 public class OverworldStickerEditor : Editor
