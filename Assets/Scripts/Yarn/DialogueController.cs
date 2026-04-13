@@ -1,5 +1,7 @@
 using UnityEngine;
+using Yarn.Unity;
 
+[RequireComponent(typeof(DialogueRunner))]
 public class DialogueController : MonoBehaviour
 {
     [SerializeField]
@@ -7,32 +9,12 @@ public class DialogueController : MonoBehaviour
 
     private SkiController m_playerSkiController;
 
-    private static DialogueController m_instance;
+    private DialogueRunner m_dialogueRunner;
 
     private void Awake()
     {
-        if (m_player == null)
-        {
-            Debug.LogError("The Dialogue Controller is missing a reference to the Player GameObject.");
-            return;
-        }
-        
         m_playerSkiController = m_player.GetComponent<SkiController>();
-    }
-
-    private void OnEnable()
-    {
-        m_instance = this;
-    }
-
-    private void OnDisable()
-    {
-        m_instance = null;
-    }
-
-    private void OnDestroy()
-    {
-        m_instance = null;
+        m_dialogueRunner = GetComponent<DialogueRunner>();
     }
 
     public void OnDialogueStart()
@@ -40,11 +22,17 @@ public class DialogueController : MonoBehaviour
         GameManager.Input.PlayerActions.Disable();
         GameManager.Input.Player.ZeroInputs();
         m_playerSkiController.Freeze();
+        m_playerSkiController.ZeroVelocityAndAcceleration();
     }
 
     public void OnDialogueComplete()
     {
         GameManager.Input.PlayerActions.Enable();
         m_playerSkiController.Unfreeze();
+    }
+
+    public void StartDialogue(string nodeName)
+    {
+        m_dialogueRunner.StartDialogue(nodeName);
     }
 }

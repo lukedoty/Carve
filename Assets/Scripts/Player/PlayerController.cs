@@ -1,6 +1,7 @@
 using UnityEngine;
 
 [RequireComponent (typeof(SkiController))]
+[RequireComponent (typeof(PlayerInteract))]
 public class PlayerController : MonoBehaviour
 {
     [SerializeField, Range(0, 0.9f)]
@@ -10,13 +11,25 @@ public class PlayerController : MonoBehaviour
     private float m_ploughDeadzone = 0.1f;
 
     private SkiController m_controller;
+    private PlayerInteract m_interact;
 
     private void Awake()
     {
         m_controller = GetComponent<SkiController>();
+        m_interact = GetComponent<PlayerInteract>();
     }
 
     private void Update()
+    {
+        HandleMovementInput();
+        
+        if (GameManager.Input.PlayerActions.Interact.WasPerformedThisFrame())
+        {
+            m_interact.Interact();
+        }
+    }
+
+    private void HandleMovementInput()
     {
         float edgeControlRaw = GameManager.Input.Player.EdgeControl;
         m_controller.EdgeControlInput = edgeControlRaw * edgeControlRaw;
