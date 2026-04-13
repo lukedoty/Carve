@@ -2685,7 +2685,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 3330.9573, y: 6.329195e+29, z: 6.59e-43, w: 6.43e-43}
+  m_BoundingSphereOverride: {x: 0, y: 2.3509887e-38, z: 0.000000001877595, w: 0.0000000037252903}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ForceVisible: 0
@@ -4506,8 +4506,6 @@ MonoBehaviour:
   m_name: NPC
   m_nodeName: ExampleNPC
   m_dialogueController: {fileID: 1137357782}
-  m_id:
-    m_id: B
 --- !u!1 &2040583980
 GameObject:
   m_ObjectHideFlags: 0

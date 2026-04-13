@@ -13,12 +13,6 @@ public class DialogueController : MonoBehaviour
 
     private void Awake()
     {
-        if (m_player == null)
-        {
-            Debug.LogError("The Dialogue Controller is missing a reference to the Player GameObject.");
-            return;
-        }
-        
         m_playerSkiController = m_player.GetComponent<SkiController>();
         m_dialogueRunner = GetComponent<DialogueRunner>();
     }
