@@ -125,7 +125,7 @@ Material:
     - _ReceiveShadows: 1
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
-    - _Sparkle_Amount: 0.2
+    - _Sparkle_Amount: 0.15
     - _Sparkle_Speed: 20
     - _SpecularHighlights: 1
     - _SrcBlend: 1

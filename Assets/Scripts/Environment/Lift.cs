@@ -68,17 +68,17 @@ public class Lift : MonoBehaviour
             splineContainer[0].Add(new BezierKnot((location - start + new Vector3(0, lineHeight, lineSide)) / loader.transform.localScale.x));
         }
 
-        splineContainer[0].Add(new BezierKnot((end - start + new Vector3(0, 0, lineSide)) / loader.transform.localScale.x));
-        splineContainer[0].Add(new BezierKnot((end - start + new Vector3(0, 0, -lineSide)) / loader.transform.localScale.x));
+        splineContainer[0].Add(new BezierKnot((end - start + new Vector3(lineSide, 0, 0)) / loader.transform.localScale.x));
+        splineContainer[0].Add(new BezierKnot((end - start + new Vector3(-lineSide, 0, 0)) / loader.transform.localScale.x));
 
         poleLocations.Reverse();
 
         foreach (Vector3 location in poleLocations)
         {
-            splineContainer[0].Add(new BezierKnot((location - start + new Vector3(0, lineHeight, -lineSide)) / loader.transform.localScale.x));
+            splineContainer[0].Add(new BezierKnot((location - start + new Vector3(-lineSide, lineHeight, 0)) / loader.transform.localScale.x));
         }
 
-        splineContainer[0].Add(new BezierKnot(new Vector3(0,0,0) + new Vector3(0, 0, -lineSide) / loader.transform.localScale.x));
+        splineContainer[0].Add(new BezierKnot(new Vector3(0,0,0) + new Vector3(-lineSide, 0, 0) / loader.transform.localScale.x));
 
         // Generates animated chairs along the spline
         for (int i = 0; i < numChairs; i++)
