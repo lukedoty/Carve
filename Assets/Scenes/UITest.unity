@@ -177,6 +177,7 @@ MonoBehaviour:
   m_journalName: {fileID: 1910097153}
   m_journalIcon: {fileID: 1956783052}
   m_journalImage: {fileID: 1769742944}
+  m_uiController: {fileID: 0}
 --- !u!58 &53782124
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -637,6 +638,7 @@ MonoBehaviour:
   m_journalName: {fileID: 1910097153}
   m_journalIcon: {fileID: 1956783052}
   m_journalImage: {fileID: 1769742944}
+  m_uiController: {fileID: 0}
 --- !u!58 &322966925
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1779,7 +1781,6 @@ GameObject:
   - component: {fileID: 1023059811}
   - component: {fileID: 1023059813}
   - component: {fileID: 1023059815}
-  - component: {fileID: 1023059810}
   m_Layer: 5
   m_Name: Cursor
   m_TagString: Untagged
@@ -1806,21 +1807,6 @@ RectTransform:
   m_AnchoredPosition: {x: -0.8, y: -44.3}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1023059810
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1023059808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bb73ae675fc6ac05bbad343608d205b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ControllerCursor
-  m_map: {fileID: 1004449962}
-  m_scrollContent: {fileID: 719872590}
-  m_cursor: {fileID: 0}
 --- !u!114 &1023059811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2713,7 +2699,7 @@ GameObject:
   - component: {fileID: 1678782574}
   - component: {fileID: 1678782575}
   m_Layer: 5
-  m_Name: UIInput
+  m_Name: UIController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2750,9 +2736,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bb73ae675fc6ac05bbad343608d205b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ControllerCursor
-  m_map: {fileID: 0}
-  m_scrollContent: {fileID: 0}
-  m_cursor: {fileID: 0}
+  m_scrollContent: {fileID: 719872590}
+  m_cursor: {fileID: 1023059808}
 --- !u!1 &1723332831
 GameObject:
   m_ObjectHideFlags: 0
