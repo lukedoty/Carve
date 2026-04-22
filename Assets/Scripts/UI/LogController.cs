@@ -5,16 +5,18 @@ public class LogController : MonoBehaviour
 {
     [SerializeField]
     private GameObject m_questLog;
-    private InputAction m_toggleLog;
-    private void OnToggleLog(InputAction.CallbackContext context)
+    private void Update()
     {
-        if (m_questLog.activeSelf)
+        if (GameManager.Input.UI.ToggleLog)
         {
-            m_questLog.SetActive(false);
-        } else
-        {
-            m_questLog.SetActive(true);
+            if (m_questLog.activeSelf)
+            {
+                m_questLog.SetActive(false);
+            } else
+            {
+                m_questLog.SetActive(true);
+            }    
         }
-        
+
     }
 }

@@ -3,6 +3,7 @@ using System;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class InputManager : MonoBehaviour
 {
@@ -15,15 +16,24 @@ public class InputManager : MonoBehaviour
     private PlayerInput m_playerInput;
     public PlayerInput Player => m_playerInput;
 
+    private UIActions m_uiActions;
+    public UIActions UIActions => m_uiActions;
+    private UIInput m_uiInput;
+    public UIInput UI => m_uiInput;
+
+
     private void Awake()
     {
         InputActionMap m_playerMap = m_inputActions.FindActionMap("Player", true);
         m_playerActions = new(m_playerMap);
+        InputActionMap m_uiMap = m_inputActions.FindActionMap("UI", true);
+        m_uiActions = new(m_uiMap);
     }
 
     private void Update()
     {
         m_playerInput.Update(m_playerActions);
+        m_uiInput.Update(m_uiActions);
     }
 }
 
@@ -68,5 +78,44 @@ public struct PlayerInput
         Jump = playerActions.Jump.IsPressed();
         EdgeControl = playerActions.EdgeControl.ReadValue<float>();
         PowerStop = playerActions.PowerStop.IsPressed();
+    }
+}
+
+public readonly struct UIActions
+{
+    public readonly InputActionMap UIMap;
+    public readonly InputAction ToggleLog;
+    public readonly InputAction Scroll;
+    public readonly InputAction Navigate;
+    public readonly InputAction Select;
+    public UIActions(InputActionMap uiMap)
+    {
+        UIMap = uiMap;
+        ToggleLog = uiMap.FindAction("Toggle Log", true);
+        Scroll = uiMap.FindAction("Scroll", true);
+        Navigate = uiMap.FindAction("Navigate", true);
+        Select = uiMap.FindAction("Select", true);
+    }
+
+    public readonly bool Enabled => UIMap.enabled;
+    public readonly void Enable() => UIMap.Enable();
+    public readonly void Disable() => UIMap.Disable();
+}
+
+public struct UIInput
+{
+    public bool ToggleLog { get; private set; }
+    public float Scroll { get; private set; }
+    public Vector2 Navigate { get; private set; }
+    public bool Select { get; private set; }
+
+    public void Update(UIActions uiActions)
+    {
+        if (!uiActions.UIMap.enabled) return;
+
+        ToggleLog = uiActions.ToggleLog.WasPressedThisFrame();
+        Scroll = uiActions.Scroll.ReadValue<float>();
+        Navigate = uiActions.Navigate.ReadValue<Vector2>();
+        Select = uiActions.Navigate.WasPressedThisFrame();
     }
 }
