@@ -85,7 +85,7 @@ public struct PlayerInput
         EdgeControl = playerActions.EdgeControl.ReadValue<float>();
         PowerStop = playerActions.PowerStop.IsPressed();
         Interact = playerActions.Interact.IsPressed();
-        ToggleJournal = playerActions.ToggleJournal.WasPressedThisFrame();
+        ToggleJournal = playerActions.ToggleJournal.WasPerformedThisFrame();
     }
 
     public void ZeroInputs()
@@ -96,6 +96,7 @@ public struct PlayerInput
         EdgeControl = 0;
         PowerStop = false;
         Interact = false;
+        ToggleJournal = false;
     }
 }
 
@@ -136,6 +137,7 @@ public struct UIInput
         ToggleLog = uiActions.ToggleLog.WasPressedThisFrame();
         Scroll = uiActions.Scroll.ReadValue<float>();
         Navigate = uiActions.Navigate.ReadValue<Vector2>();
-        Select = uiActions.Navigate.WasPressedThisFrame();
+        Select = uiActions.Select.WasPressedThisFrame();
+        ToggleJournal = uiActions.ToggleJournal.WasPressedThisFrame();
     }
 }

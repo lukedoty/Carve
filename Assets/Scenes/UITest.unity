@@ -119,6 +119,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &714036213 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4653123145635772398, guid: 5149fb02f1f7a8307942fce79ecec00a, type: 3}
+  m_PrefabInstance: {fileID: 130838144545177256}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &741816555
 GameObject:
   m_ObjectHideFlags: 0
@@ -478,13 +483,37 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 877856607100562053, guid: 5149fb02f1f7a8307942fce79ecec00a, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1917809691862239912, guid: 5149fb02f1f7a8307942fce79ecec00a, type: 3}
+      propertyPath: m_journal
+      value: 
+      objectReference: {fileID: 714036213}
     - target: {fileID: 2116682765544580048, guid: 5149fb02f1f7a8307942fce79ecec00a, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2116682765544580048, guid: 5149fb02f1f7a8307942fce79ecec00a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.000000033703298
+      objectReference: {fileID: 0}
     - target: {fileID: 4653123145635772398, guid: 5149fb02f1f7a8307942fce79ecec00a, type: 3}
       propertyPath: m_Name
       value: JounalCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 4747955083296269521, guid: 5149fb02f1f7a8307942fce79ecec00a, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4747955083296269521, guid: 5149fb02f1f7a8307942fce79ecec00a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4747955083296269521, guid: 5149fb02f1f7a8307942fce79ecec00a, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8662604147699772355, guid: 5149fb02f1f7a8307942fce79ecec00a, type: 3}
       propertyPath: m_Pivot.x

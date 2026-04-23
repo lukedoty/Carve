@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     private float m_ploughDeadzone = 0.1f;
 
     [SerializeField]
-    private GameObject m_ui;
+    private GameObject m_journal;
 
     private SkiController m_controller;
     private PlayerInteract m_interact;
@@ -30,10 +30,21 @@ public class PlayerController : MonoBehaviour
         {
             m_interact.Interact();
         }
+
+        //BUG: Player movement is not properly zeroed
+        if (GameManager.Input.Player.ToggleJournal)
+        {
+            GameManager.Input.PlayerActions.Disable();
+            GameManager.Input.Player.ZeroInputs();
+            m_journal.SetActive(true);
+
+        }
     }
 
     private void HandleMovementInput()
     {
+        if (!GameManager.Input.PlayerActions.Enabled) return;
+
         float edgeControlRaw = GameManager.Input.Player.EdgeControl;
         m_controller.EdgeControlInput = edgeControlRaw * edgeControlRaw;
 
@@ -48,11 +59,6 @@ public class PlayerController : MonoBehaviour
         float yBottomHalf = Mathf.Max(-GameManager.Input.Player.Move.y, 0);
         m_controller.PlowInput = 1 / (1 - m_ploughDeadzone) * (yBottomHalf - m_ploughDeadzone);
 
-        if (GameManager.Input.Player.ToggleJournal)
-        {
-            m_ui.SetActive(true);
-            GameManager.Input.PlayerActions.Disable();
-            GameManager.Input.Player.ZeroInputs();
-        }
+        
     }
 }
