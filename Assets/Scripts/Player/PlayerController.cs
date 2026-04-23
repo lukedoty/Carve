@@ -52,6 +52,7 @@ public class PlayerController : MonoBehaviour
         {
             m_ui.SetActive(true);
             GameManager.Input.PlayerActions.Disable();
+            GameManager.Input.Player.ZeroInputs();
         }
     }
 }
