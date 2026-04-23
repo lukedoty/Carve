@@ -79,7 +79,7 @@ public class NotificationController : MonoBehaviour
         GameObject notification = Instantiate(m_notificationPrefab, transform);
 
         TMP_Text[] text = notification.GetComponentsInChildren<TMP_Text>();
-        RawImage icon = notification.GetComponentInChildren<RawImage>();
+        Image icon = notification.GetComponentInChildren<Image>();
         
         switch (type)
         {
@@ -87,7 +87,7 @@ public class NotificationController : MonoBehaviour
                 text[0].text = m_obtainStickerHeader;
                 Sticker sticker = GameManager.Sticker.Registry[id];
                 text[1].text = sticker.Name;
-                icon.texture = sticker.StickerImage;
+                icon.sprite = sticker.StickerImage;
                 break;
             case NotificationType.AssignQuest:
                 text[0].text = m_assignQuestHeader;
