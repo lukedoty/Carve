@@ -21,14 +21,14 @@ public class DialogueController : MonoBehaviour
     {
         GameManager.Input.PlayerActions.Disable();
         GameManager.Input.Player.ZeroInputs();
-        //m_playerSkiController.Freeze();
+        m_playerSkiController.Freeze();
         m_playerSkiController.ZeroVelocityAndAcceleration();
     }
 
     public void OnDialogueComplete()
     {
         GameManager.Input.PlayerActions.Enable();
-        //m_playerSkiController.Unfreeze();
+        m_playerSkiController.Unfreeze();
     }
 
     public void StartDialogue(string nodeName)

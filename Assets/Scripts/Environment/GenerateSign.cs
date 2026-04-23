@@ -34,7 +34,7 @@ public class GenerateSign : MonoBehaviour
 
             GameObject graphic = Instantiate(signGraphic, this.transform);
             //graphic.transform.localScale = graphic.transform.localScale / this.transform.localScale.x;
-            graphic.transform.position = graphic.transform.position + new UnityEngine.Vector3(0, signTop * transform.localScale.x - (signDisplacement * signNum * transform.localScale.x ), 0.11f * transform.localScale.x) / 40;
+            graphic.transform.position = graphic.transform.position + new UnityEngine.Vector3(0, signTop * transform.localScale.x - (signDisplacement * signNum * transform.localScale.x ), 0.09f * transform.localScale.x) / 40;
 
             TextMeshProUGUI signText = graphic.GetComponentInChildren<TextMeshProUGUI>();
 
