@@ -5,6 +5,8 @@ public class UIController : MonoBehaviour
     private GameObject m_scrollContent;
     [SerializeField]
     private GameObject m_cursor;
+    [SerializeField]
+    private GameObject m_journal;
     public GameObject CurrentSlope { get; set; }
     void Update()
     {
@@ -24,8 +26,14 @@ public class UIController : MonoBehaviour
         {
             if (CurrentSlope != null)
             {
-                //do something with the current slope
+                //do something with the current slope declared in SlopeMarker.cs
             }
+        }
+
+        if (GameManager.Input.UI.ToggleJournal)
+        {
+            m_journal.SetActive(false);
+            GameManager.Input.PlayerActions.Enable();
         }
     }
 }

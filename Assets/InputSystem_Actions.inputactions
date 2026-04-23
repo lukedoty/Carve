@@ -59,6 +59,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Toggle Journal",
+                    "type": "Button",
+                    "id": "0f00324d-70b9-4e68-bd32-f560bdf55ac8",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -292,6 +301,17 @@
                     "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "884f6680-18f1-4575-82fd-5c287c141636",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Toggle Journal",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -336,6 +356,33 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Toggle Log",
+                    "type": "Button",
+                    "id": "0a411b64-aa77-4cf0-aaed-30b3c3a9d386",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Scroll",
+                    "type": "Value",
+                    "id": "612a9e5c-605b-45f9-8121-c76cfcae2914",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Select",
+                    "type": "Button",
+                    "id": "ca04f03f-9e55-45b2-b56d-d737e697a936",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Click",
                     "type": "PassThrough",
                     "id": "d5d39a1a-b192-4efd-bf69-2217f93838f8",
@@ -366,6 +413,15 @@
                     "name": "ScrollWheel",
                     "type": "PassThrough",
                     "id": "a9756011-5d9e-409f-85a8-739fc249acf6",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Toggle Journal",
+                    "type": "Button",
+                    "id": "523637a0-2e7c-4eae-b66a-0eae8a0756e6",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -639,6 +695,39 @@
                 },
                 {
                     "name": "",
+                    "id": "6da625f5-fd0b-426e-91fd-9d4ae9601b37",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Toggle Log",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9c540c84-9ed5-48ea-8f40-b0e0d3a105e4",
+                    "path": "<Gamepad>/rightStick/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Scroll",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f3f2f7b6-cc8e-49e8-826b-841d89638463",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "d3fa732e-d607-4daa-a492-1771effa64b1",
                     "path": "",
                     "interactions": "",
@@ -678,6 +767,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "ScrollWheel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "67f54ad6-aac6-42b1-b0be-6108224f120c",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Toggle Journal",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "74307596-9a33-4770-90fa-435b8d078b7e",
+                    "path": "<Gamepad>/select",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Toggle Journal",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

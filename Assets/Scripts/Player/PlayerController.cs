@@ -10,6 +10,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField, Range(0, 0.9f)]
     private float m_ploughDeadzone = 0.1f;
 
+    [SerializeField]
+    private GameObject m_ui;
+
     private SkiController m_controller;
     private PlayerInteract m_interact;
 
@@ -44,5 +47,11 @@ public class PlayerController : MonoBehaviour
 
         float yBottomHalf = Mathf.Max(-GameManager.Input.Player.Move.y, 0);
         m_controller.PlowInput = 1 / (1 - m_ploughDeadzone) * (yBottomHalf - m_ploughDeadzone);
+
+        if (GameManager.Input.Player.ToggleJournal)
+        {
+            m_ui.SetActive(true);
+            GameManager.Input.PlayerActions.Disable();
+        }
     }
 }
