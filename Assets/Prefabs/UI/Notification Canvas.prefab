@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8717981692478446946}
   - component: {fileID: 971469386837577250}
   m_Layer: 5
-  m_Name: Notification System
+  m_Name: Notification Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
