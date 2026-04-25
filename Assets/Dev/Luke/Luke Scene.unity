@@ -179,10 +179,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4233642296748452091, guid: 05544dea02737f347b1048cc66e51a32, type: 3}
-      propertyPath: m_player
-      value: 
-      objectReference: {fileID: 1148140776}
     - target: {fileID: 4957563322911917978, guid: 05544dea02737f347b1048cc66e51a32, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -255,15 +251,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Carve Dialogue System
       objectReference: {fileID: 0}
-    - target: {fileID: 6434628724656766361, guid: 05544dea02737f347b1048cc66e51a32, type: 3}
-      propertyPath: autoStart
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 5978270450580734465, guid: 05544dea02737f347b1048cc66e51a32, type: 3}
+      propertyPath: m_player
+      value: 
+      objectReference: {fileID: 1148140776}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05544dea02737f347b1048cc66e51a32, type: 3}
+--- !u!114 &29694519 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5978270450580734465, guid: 05544dea02737f347b1048cc66e51a32, type: 3}
+  m_PrefabInstance: {fileID: 29694518}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a6f9092d758f2a4292c7d586d0c7d56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueController
 --- !u!1 &163359878
 GameObject:
   m_ObjectHideFlags: 0
@@ -2685,7 +2692,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 3330.9573, y: 6.329195e+29, z: 6.59e-43, w: 6.43e-43}
+  m_BoundingSphereOverride: {x: 1.5046328e-36, y: 6.3108872e-30, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ForceVisible: 0
@@ -3452,17 +3459,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 10}
---- !u!114 &1137357782 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4233642296748452091, guid: 05544dea02737f347b1048cc66e51a32, type: 3}
-  m_PrefabInstance: {fileID: 29694518}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f84459889039c83448d92c0caf4afcc7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DialogueController
 --- !u!1 &1146564910
 GameObject:
   m_ObjectHideFlags: 0
@@ -4505,9 +4501,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NPCInteractable
   m_name: NPC
   m_nodeName: ExampleNPC
-  m_dialogueController: {fileID: 1137357782}
-  m_id:
-    m_id: B
+  m_dialogueController: {fileID: 29694519}
 --- !u!1 &2040583980
 GameObject:
   m_ObjectHideFlags: 0
