@@ -21,6 +21,6 @@ public class NPCInteractable : Interactable
 
     public override void Interact()
     {
-        m_dialogueController.StartDialogue(m_nodeName, transform);
+        m_dialogueController.StartDialogue(m_nodeName);
     }
 }
