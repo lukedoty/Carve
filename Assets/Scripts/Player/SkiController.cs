@@ -89,6 +89,9 @@ public class SkiController : MonoBehaviour
     [SerializeField]
     private Vector3 m_accelerationGravity = Vector3.down * 9.8f;
 
+    [SerializeField]
+    private bool m_isFrozen;
+
 
     private CharacterController m_controller;
 
@@ -117,6 +120,8 @@ public class SkiController : MonoBehaviour
 
     private void Update()
     {
+        if (m_isFrozen) return;
+
         HandleMovement();
         HandleTurning();
     }
@@ -276,4 +281,8 @@ public class SkiController : MonoBehaviour
         m_vel = Vector3.zero;
         m_acc = Vector3.zero;
     }
+
+    public void Freeze() => m_isFrozen = true;
+
+    public void Unfreeze() => m_isFrozen = false;
 }
