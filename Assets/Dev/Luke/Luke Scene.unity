@@ -179,6 +179,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2274824834489489826, guid: 05544dea02737f347b1048cc66e51a32, type: 3}
+      propertyPath: hurryUpLineAction
+      value: 
+      objectReference: {fileID: 1552945929}
+    - target: {fileID: 2274824834489489826, guid: 05544dea02737f347b1048cc66e51a32, type: 3}
+      propertyPath: hurryUpOptionsAction
+      value: 
+      objectReference: {fileID: 1665627514}
     - target: {fileID: 4957563322911917978, guid: 05544dea02737f347b1048cc66e51a32, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2692,7 +2700,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.5046328e-36, y: 6.3108872e-30, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 6.5732924e+28}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ForceVisible: 0
@@ -4315,6 +4323,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1552945929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
+  m_Name: UI/Submit
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.InputActionReference
+  m_Asset: {fileID: -944628639613478452, guid: 6797721cfbaca7ae4ba929680f1702e1, type: 3}
+  m_ActionId: 7607c7b6-cd76-4816-beef-bd0341cfe950
 --- !u!1 &1596411653
 GameObject:
   m_ObjectHideFlags: 0
@@ -4385,6 +4407,20 @@ MonoBehaviour:
   m_name: NPC
   m_nodeName: ExampleNPC
   m_dialogueController: {fileID: 29694519}
+--- !u!114 &1665627514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
+  m_Name: UI/Submit
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.InputActionReference
+  m_Asset: {fileID: -944628639613478452, guid: 6797721cfbaca7ae4ba929680f1702e1, type: 3}
+  m_ActionId: 7607c7b6-cd76-4816-beef-bd0341cfe950
 --- !u!43 &2058331906
 Mesh:
   m_ObjectHideFlags: 0
