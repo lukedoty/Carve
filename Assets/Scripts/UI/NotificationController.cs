@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
@@ -66,7 +65,7 @@ public class NotificationController : MonoBehaviour
             if (notification.Duration <= 0)
             {
                 m_notifications.RemoveAt(i);
-                Destroy(notification.Obj);
+                notification.Obj.GetComponent<NotificationView>().Hide();
             } else
             {
                 m_notifications[i] = notification;
@@ -77,29 +76,47 @@ public class NotificationController : MonoBehaviour
     private void InstantiateNotification(NotificationType type, string id)
     {
         GameObject notification = Instantiate(m_notificationPrefab, transform);
+        NotificationView view = notification.GetComponent<NotificationView>();
 
-        TMP_Text[] text = notification.GetComponentsInChildren<TMP_Text>();
-        Image icon = notification.GetComponentInChildren<Image>();
-        
+        string header = "";
+        string body = "";
+        Sprite icon = null;
+
         switch (type)
         {
             case NotificationType.ObtainSticker:
-                text[0].text = m_obtainStickerHeader;
                 Sticker sticker = GameManager.Sticker.Registry[id];
-                text[1].text = sticker.Name;
-                icon.sprite = sticker.StickerImage;
+                header = m_obtainStickerHeader;
+                body = sticker.Name;
+                icon = sticker.StickerImage;
                 break;
             case NotificationType.AssignQuest:
-                text[0].text = m_assignQuestHeader;
-                text[1].text = GameManager.Quest.Registry[id].Name;
+                header = m_assignQuestHeader;
+                body = GameManager.Quest.Registry[id].Name;
                 break;
             case NotificationType.CompleteQuest:
-                text[0].text = m_completeQuestHeader;
-                text[1].text = GameManager.Quest.Registry[id].Name;
+                Quest quest = GameManager.Quest.Registry[id];
+                header = m_completeQuestHeader;
+                body = quest.Name;
+                icon = ResolveQuestRewardIcon(quest);
                 break;
         }
 
+        view.Show(header, body, icon);
+
         m_notifications.Insert(0, new Notification(notification, m_notificationLifetime));
+    }
+
+    private Sprite ResolveQuestRewardIcon(Quest quest)
+    {
+        foreach (QuestReward reward in quest.Rewards)
+        {
+            if (reward.RewardType == QuestRewardType.Sticker)
+            {
+                return GameManager.Sticker.Registry[reward.ID].StickerImage;
+            }
+        }
+        return null;
     }
 
     private enum NotificationType
