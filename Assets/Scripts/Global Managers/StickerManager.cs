@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -7,6 +9,18 @@ public class StickerManager : RegistryController<Sticker>
     private UnityEvent<string> m_obtainStickerEvent;
     public UnityEvent<string> ObtainStickerEvent => m_obtainStickerEvent;
     public List<string> ObtainedStickerIDs => GameManager.ActiveState.ObtainedStickerIDs;
+    
+    [Serializable]
+    public struct StickerPage
+    {
+        public string pageTitle;
+        public Sticker topSticker;
+        public Sticker midSticker;
+        public Sticker bottomSticker;
+    }
+
+    [SerializeField]
+    public List<StickerPage> StickerBookPages;
 
     protected override void Awake()
     {

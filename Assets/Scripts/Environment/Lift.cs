@@ -59,23 +59,23 @@ public class Lift : MonoBehaviour
         // Builds spline and places poles
         SplineContainer splineContainer = startStructure.AddComponent<SplineContainer>();
         splineContainer[0].Closed = true;
-        splineContainer[0].Add(new BezierKnot(new Vector3(0,0,0) + new Vector3(0, 0, lineSide) / loader.transform.localScale.x));
+        splineContainer[0].Add(new BezierKnot(new Vector3(0,0,0) + new Vector3(lineSide, 0, lineHeight) / loader.transform.localScale.x));
 
         foreach (Vector3 location in poleLocations)
         {
             Debug.Log(location);
             Instantiate(pole, location, pole.transform.rotation);
-            splineContainer[0].Add(new BezierKnot((location - start + new Vector3(0, lineHeight, lineSide)) / loader.transform.localScale.x));
+            splineContainer[0].Add(new BezierKnot((location - start + new Vector3(lineSide, lineHeight, 0)) / loader.transform.localScale.x));
         }
 
-        splineContainer[0].Add(new BezierKnot((end - start + new Vector3(0, 0, lineSide)) / loader.transform.localScale.x));
-        splineContainer[0].Add(new BezierKnot((end - start + new Vector3(0, 0, -lineSide)) / loader.transform.localScale.x));
+        splineContainer[0].Add(new BezierKnot((end - start + new Vector3(5, 0, lineSide)) / loader.transform.localScale.x));
+        splineContainer[0].Add(new BezierKnot((end - start + new Vector3(5, 0, -lineSide)) / loader.transform.localScale.x));
 
         poleLocations.Reverse();
 
         foreach (Vector3 location in poleLocations)
         {
-            splineContainer[0].Add(new BezierKnot((location - start + new Vector3(0, lineHeight, -lineSide)) / loader.transform.localScale.x));
+            splineContainer[0].Add(new BezierKnot((location - start + new Vector3(-lineSide, lineHeight, 0)) / loader.transform.localScale.x));
         }
 
         splineContainer[0].Add(new BezierKnot(new Vector3(0,0,0) + new Vector3(0, 0, -lineSide) / loader.transform.localScale.x));
