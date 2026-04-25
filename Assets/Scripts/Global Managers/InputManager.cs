@@ -34,7 +34,8 @@ public readonly struct PlayerActions
     public readonly InputAction Look;
     public readonly InputAction Jump;
     public readonly InputAction EdgeControl;
-    public readonly InputAction EdgeControlOverride;
+    public readonly InputAction PowerStop;
+    public readonly InputAction Interact;
 
     public PlayerActions(InputActionMap playerMap)
     {
@@ -43,7 +44,8 @@ public readonly struct PlayerActions
         Look = playerMap.FindAction("Look", true);
         Jump = playerMap.FindAction("Jump", true);
         EdgeControl = playerMap.FindAction("Edge Control", true);
-        EdgeControlOverride = playerMap.FindAction("Edge Control Override", true);
+        PowerStop = playerMap.FindAction("Power Stop", true);
+        Interact = playerMap.FindAction("Interact", true);
     }
 
     public readonly bool Enabled => PlayerMap.enabled;
@@ -57,16 +59,28 @@ public struct PlayerInput
     public Vector2 Look { get; private set; }
     public bool Jump { get; private set; }
     public float EdgeControl { get; private set; }
-    public bool EdgeControlOverride { get; private set; }
+    public bool PowerStop { get; private set; }
+    public bool Interact { get; private set; }
 
     public void Update(PlayerActions playerActions)
     {
-        if (!playerActions.PlayerMap.enabled) return;
+        if (!playerActions.Enabled) return;
 
         Move = playerActions.Move.ReadValue<Vector2>();
         Look = playerActions.Look.ReadValue<Vector2>();
         Jump = playerActions.Jump.IsPressed();
         EdgeControl = playerActions.EdgeControl.ReadValue<float>();
-        EdgeControlOverride = playerActions.EdgeControlOverride.IsPressed();
+        PowerStop = playerActions.PowerStop.IsPressed();
+        Interact = playerActions.Interact.IsPressed();
+    }
+
+    public void ZeroInputs()
+    {
+        Move = Vector2.zero;
+        Look = Vector2.zero;
+        Jump = false;
+        EdgeControl = 0;
+        PowerStop = false;
+        Interact = false;
     }
 }

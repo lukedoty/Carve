@@ -1,52 +1,115 @@
 using UnityEngine;
+using Unity.Cinemachine;
 
-[RequireComponent(typeof(Camera))]
+[RequireComponent(typeof(SkiController))]
 public class SkiCamController : MonoBehaviour
 {
-    [SerializeField]
+    [SerializeField] private CinemachineOrbitalFollow m_orbiter;
     private SkiController m_controller;
 
-    [SerializeField]
-    private Vector3 m_lookOffset;
+    [Header("Horizontal")]
+    // smaller value is smoother
+    [SerializeField] private float directionSmoothSharpness = 4f;
+    [SerializeField] private float minSpeedToUpdateDirection = 0.5f;
 
-    private Camera m_cam;
+    [Header("Vertical")]
+    [SerializeField] private float baseVerticalAngle = 20f;
+    [SerializeField] private float verticalSmoothSharpness = 4f;
+    [SerializeField] private float maxVerticalOffsetAngle = 25f;
 
-    private Vector3 m_initialLocalPos;
-
-    private float m_yAngle;
+    private Vector3 _smoothedPlanarForward = Vector3.forward;
+    private float _currentAngle;
+    private float _smoothedVerticalOffsetAngle;
 
     private void Awake()
     {
-        if (m_controller == null) m_controller = GetComponentInParent<SkiController>();
+        m_controller = GetComponent<SkiController>();
 
-        m_cam = GetComponent<Camera>();
-        m_initialLocalPos = transform.localPosition;
+        Vector3 initialForward = transform.forward;
+        initialForward.y = 0f;
+        if (initialForward.sqrMagnitude > 0.0001f)
+            _smoothedPlanarForward = initialForward.normalized;
+
+        _currentAngle = Mathf.Atan2(_smoothedPlanarForward.x, _smoothedPlanarForward.z) * Mathf.Rad2Deg;
+        _smoothedVerticalOffsetAngle = 0f;
+
+        m_orbiter.HorizontalAxis.Value = _currentAngle;
+        m_orbiter.VerticalAxis.Value = baseVerticalAngle;
     }
 
     private void LateUpdate()
     {
-        if (m_controller == null) return;
+        float dt = Time.deltaTime;
+        if (dt <= 0f)
+            return;
 
-        Vector3 skiPos = m_controller.transform.position;
+        Vector3 velocity = m_controller.Velocity;
 
-        if (m_controller.IsSkatable)
+        UpdateHorizontal(velocity, dt);
+        UpdateVertical(velocity, dt);
+    }
+
+    private void UpdateHorizontal(Vector3 velocity, float dt)
+    {
+        if (m_controller.IsSkating)
         {
-            m_yAngle = m_controller.transform.rotation.eulerAngles.y;
-            // TODO: When going fast over a skatable area, the camera should keep its position and not snap to player direction.
+            float angle = m_controller.transform.rotation.eulerAngles.y;
+            m_orbiter.HorizontalAxis.Value = angle;
+            return;
         }
-        else
+
+        Vector3 planarVelocity = velocity;
+        planarVelocity.y = 0f;
+
+        float planarSpeedSq = planarVelocity.sqrMagnitude;
+        if (planarSpeedSq > minSpeedToUpdateDirection * minSpeedToUpdateDirection)
         {
-            Vector3 groundForward = Vector3.ProjectOnPlane(m_controller.LastGroundedGroundNormal, Vector3.up);
-            m_yAngle = Vector3.SignedAngle(Vector3.forward, groundForward, Vector3.up);
+            Vector3 desiredForward = planarVelocity.normalized;
+
+            float t = 1f - Mathf.Exp(-directionSmoothSharpness * dt);
+            _smoothedPlanarForward = Vector3.Slerp(_smoothedPlanarForward, desiredForward, t);
+            _smoothedPlanarForward.y = 0f;
+
+            if (_smoothedPlanarForward.sqrMagnitude > 0.0001f)
+                _smoothedPlanarForward.Normalize();
         }
 
-        Vector3 m_boomOffset = m_initialLocalPos - m_lookOffset;
-        Quaternion boomRotation = Quaternion.AngleAxis(m_yAngle, m_controller.LastGroundedGroundNormal);
-        
-        Vector3 targetPos = skiPos + m_lookOffset + boomRotation * m_boomOffset;
-        transform.position = targetPos; // TODO: replace with robust animation and interpolation
+        float targetAngle = Mathf.Atan2(_smoothedPlanarForward.x, _smoothedPlanarForward.z) * Mathf.Rad2Deg;
+        _currentAngle = targetAngle;
+        m_orbiter.HorizontalAxis.Value = _currentAngle;
+    }
 
-        Quaternion rotation = Quaternion.LookRotation(skiPos + m_lookOffset - transform.position, Vector3.up);
-        transform.rotation = rotation;
+    private void UpdateVertical(Vector3 velocity, float dt)
+    {
+        Vector3 planarVelocity = velocity;
+        planarVelocity.y = 0f;
+
+        float planarSpeed = planarVelocity.magnitude;
+        float targetVerticalOffsetAngle = 0f;
+
+        if (planarSpeed > 0.01f)
+        {
+            float pitchFromVelocity = -Mathf.Atan2(velocity.y, planarSpeed) * Mathf.Rad2Deg;
+            targetVerticalOffsetAngle = Mathf.Clamp(
+                pitchFromVelocity,
+                -maxVerticalOffsetAngle,
+                maxVerticalOffsetAngle
+            );
+        }
+
+        float t = 1f - Mathf.Exp(-verticalSmoothSharpness * dt);
+        _smoothedVerticalOffsetAngle = Mathf.Lerp(
+            _smoothedVerticalOffsetAngle,
+            targetVerticalOffsetAngle,
+            t
+        );
+
+        _smoothedVerticalOffsetAngle = Mathf.Clamp(
+            _smoothedVerticalOffsetAngle,
+            -maxVerticalOffsetAngle,
+            maxVerticalOffsetAngle
+        );
+
+        m_orbiter.VerticalAxis.Value = baseVerticalAngle + _smoothedVerticalOffsetAngle;
     }
 }
