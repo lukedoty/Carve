@@ -15,10 +15,14 @@ public class Lift : MonoBehaviour
     public GameObject pole;
     public GameObject chair;
     public GameObject loader;
+    public GameObject unloader;
+    public GameObject empty;
 
     // Adjustments for the chair spline
     public float lineHeight;
     public float lineSide;
+    public float loaderLen;
+    public float unloaderLen;
 
     // How many chairs across the entire wire
     // Will be automatically spaced evenly
@@ -53,32 +57,45 @@ public class Lift : MonoBehaviour
     public void BuildLift()
     {
         // Builds entrance and exit
-        GameObject startStructure = Instantiate(loader, start, Quaternion.identity);
-        GameObject endStructure = Instantiate(loader, end, Quaternion.identity);
+        GameObject startLoader = Instantiate(loader, start, Quaternion.identity);
+        Instantiate(unloader, end, Quaternion.identity);
+        LiftInteract interact = startLoader.GetComponentInChildren<LiftInteract>();
+        if (!interact)
+        {
+            Debug.LogError($"LiftInteract could not be found on {liftName}.");
+        } else
+        {
+            interact.setTPLocation(end + new Vector3(0, 2, 2));
+            Debug.Log($"TP Location set to {end + new Vector3(0, 10, 2)}");
+        }
 
         // Builds spline and places poles
+        GameObject startStructure = Instantiate(empty, start, Quaternion.identity);
         SplineContainer splineContainer = startStructure.AddComponent<SplineContainer>();
         splineContainer[0].Closed = true;
-        splineContainer[0].Add(new BezierKnot(new Vector3(0,0,0) + new Vector3(lineSide, 0, lineHeight) / loader.transform.localScale.x));
+        splineContainer[0].Add(new BezierKnot(new Vector3(0,0,0) + new Vector3(lineSide * 1.2f, lineHeight / 2, -loaderLen / 2) / empty.transform.localScale.x));
+        splineContainer[0].Add(new BezierKnot(new Vector3(0,0,0) + new Vector3(lineSide * 1.2f, lineHeight / 2, loaderLen / 2) / empty.transform.localScale.x));
 
         foreach (Vector3 location in poleLocations)
         {
             Debug.Log(location);
             Instantiate(pole, location, pole.transform.rotation);
-            splineContainer[0].Add(new BezierKnot((location - start + new Vector3(lineSide, lineHeight, 0)) / loader.transform.localScale.x));
+            splineContainer[0].Add(new BezierKnot((location - start + new Vector3(lineSide, lineHeight, 0)) / empty.transform.localScale.x));
         }
-
-        splineContainer[0].Add(new BezierKnot((end - start + new Vector3(5, 0, lineSide)) / loader.transform.localScale.x));
-        splineContainer[0].Add(new BezierKnot((end - start + new Vector3(5, 0, -lineSide)) / loader.transform.localScale.x));
+        splineContainer[0].Add(new BezierKnot((end - start + new Vector3(lineSide, lineHeight / 1.8f, -loaderLen / 2)) / empty.transform.localScale.x));
+        splineContainer[0].Add(new BezierKnot((end - start + new Vector3(lineSide, lineHeight / 1.8f, loaderLen / 2)) / empty.transform.localScale.x));
+        splineContainer[0].Add(new BezierKnot((end - start + new Vector3(-lineSide, lineHeight / 1.8f, loaderLen / 2)) / empty.transform.localScale.x));
+        splineContainer[0].Add(new BezierKnot((end - start + new Vector3(-lineSide, lineHeight / 1.8f, -loaderLen / 2)) / empty.transform.localScale.x));
 
         poleLocations.Reverse();
 
         foreach (Vector3 location in poleLocations)
         {
-            splineContainer[0].Add(new BezierKnot((location - start + new Vector3(-lineSide, lineHeight, 0)) / loader.transform.localScale.x));
+            splineContainer[0].Add(new BezierKnot((location - start + new Vector3(-lineSide, lineHeight, 0)) / empty.transform.localScale.x));
         }
 
-        splineContainer[0].Add(new BezierKnot(new Vector3(0,0,0) + new Vector3(0, 0, -lineSide) / loader.transform.localScale.x));
+        splineContainer[0].Add(new BezierKnot(new Vector3(0,0,0) + new Vector3(-lineSide / 2, lineHeight / 2, loaderLen / 2) / empty.transform.localScale.x));
+        splineContainer[0].Add(new BezierKnot(new Vector3(0,0,0) + new Vector3(-lineSide / 2, lineHeight / 2, -loaderLen / 2) / empty.transform.localScale.x));
 
         // Generates animated chairs along the spline
         for (int i = 0; i < numChairs; i++)

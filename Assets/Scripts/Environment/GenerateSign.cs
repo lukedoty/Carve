@@ -29,11 +29,9 @@ public class GenerateSign : MonoBehaviour
         foreach (SignInfo sign in signs)
         {
             GameObject panel = Instantiate(signPanel, this.transform);
-            //panel.transform.localScale = panel.transform.localScale / this.transform.localScale.x;
             panel.transform.position = panel.transform.position + new UnityEngine.Vector3(0, signTop * transform.localScale.x - (signDisplacement * signNum * transform.localScale.x), 0.06f * transform.localScale.x) / 40;
 
             GameObject graphic = Instantiate(signGraphic, this.transform);
-            //graphic.transform.localScale = graphic.transform.localScale / this.transform.localScale.x;
             graphic.transform.position = graphic.transform.position + new UnityEngine.Vector3(0, signTop * transform.localScale.x - (signDisplacement * signNum * transform.localScale.x ), 0.11f * transform.localScale.x) / 40;
 
             TextMeshProUGUI signText = graphic.GetComponentInChildren<TextMeshProUGUI>();
