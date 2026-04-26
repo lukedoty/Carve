@@ -402,8 +402,9 @@ MonoBehaviour:
   goodScreenQuest:
     m_id: ending
   evilAds:
-  - {fileID: 21300000, guid: 4257c8da487f4f14fa29a04267e460bf, type: 3}
-  - {fileID: 21300000, guid: 43645b5f29a35ad429b7271162eaa3c5, type: 3}
+  - {fileID: 21300000, guid: f4ab99ecb9f66ff409b549f7efad767b, type: 3}
+  - {fileID: 21300000, guid: e68cf3862c6329a4bb0af9242845957b, type: 3}
+  - {fileID: 21300000, guid: bd4b111800a774947880a0d1740ba587, type: 3}
   goodAds:
   - {fileID: 21300000, guid: dc023a6a07073bdf380643ff0151433a, type: 3}
   - {fileID: 21300000, guid: af6a03774d590364d93c3198d04a0f7c, type: 3}

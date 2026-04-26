@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class InteractionPrompt : MonoBehaviour
@@ -7,6 +8,8 @@ public class InteractionPrompt : MonoBehaviour
     private PlayerInteract m_playerInteract;
     [SerializeField]
     private TMP_Text m_textComponent;
+    [SerializeField]
+    private Image buttonPrompt; 
 
     private void Awake()
     {
@@ -19,9 +22,11 @@ public class InteractionPrompt : MonoBehaviour
         {
             m_textComponent.text = m_playerInteract.Target.Prompt;
             m_textComponent.enabled = true;
+            buttonPrompt.enabled = true;
         }
         else
         {
+            buttonPrompt.enabled = false;
             m_textComponent.enabled = false;
         }
     }
