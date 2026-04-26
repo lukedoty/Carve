@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LiftInteract : Interactable
 {
@@ -7,6 +8,10 @@ public class LiftInteract : Interactable
     private string m_name;
     [SerializeField]
     private Vector3 m_tpLocation;
+    [SerializeField]
+    private Image m_blackPanel;
+    [SerializeField]
+    private float m_fadeTime;
     private GameObject m_player;
 
     private void Awake()
@@ -32,11 +37,10 @@ public class LiftInteract : Interactable
         SkiController controller = m_player.GetComponent<SkiController>();
         controller.ZeroVelocityAndAcceleration();
         controller.Freeze();
-        m_player.transform.position = m_tpLocation;
-
-        yield return new WaitForSeconds(0.5f);
+        yield return Fade();
         
-        controller.Unfreeze();
+        m_blackPanel.color = new Color(0, 0, 0, 0);
+        yield return Unfade();
     }
 
     public void setTPLocation(Vector3 location)
@@ -49,6 +53,37 @@ public class LiftInteract : Interactable
         if (other.CompareTag("Player"))
         {
             m_player = other.gameObject;
+        }
+    }
+
+    private IEnumerator Fade()
+    {
+        float m_timer = 0;
+        float m_percentFaded;
+        
+        while (m_timer < m_fadeTime)
+        {
+            m_timer += Time.deltaTime;
+            m_percentFaded = m_timer/m_fadeTime;
+            m_blackPanel.color = new Color(0, 0, 0, m_percentFaded);
+            yield return null;
+        }
+        m_player.transform.position = m_tpLocation;
+        m_player.GetComponent<SkiController>().Unfreeze();
+        yield return new WaitForSeconds(1f);
+    }
+
+    private IEnumerator Unfade()
+    {
+        float m_timer = 0;
+        float m_percentFaded;
+        
+        while (m_timer < m_fadeTime)
+        {
+            m_timer += Time.deltaTime;
+            m_percentFaded = m_timer/m_fadeTime;
+            m_blackPanel.color = new Color(0, 0, 0, 1 - m_percentFaded);
+            yield return null;
         }
     }
 }
