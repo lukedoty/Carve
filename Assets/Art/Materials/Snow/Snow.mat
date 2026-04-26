@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Snow
-  m_Shader: {fileID: -6465566751694194690, guid: 69db0fc4ea036334eb7c08692002a648, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 6d29d491f206ddf408adb067d46f0380, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -125,8 +125,8 @@ Material:
     - _ReceiveShadows: 1
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
-    - _Sparkle_Amount: 0.1
-    - _Sparkle_Speed: 20
+    - _Sparkle_Amount: 0.13
+    - _Sparkle_Speed: 9.3
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
@@ -136,10 +136,10 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Base_Snow_Color: {r: 0.81579924, g: 0.93981063, b: 0.98490566, a: 1}
+    - _Base_Snow_Color: {r: 0.95660377, g: 0.9945695, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _Snow_Outline_Color: {r: 0.5037736, g: 0.7940891, b: 1, a: 1}
+    - _Snow_Outline_Color: {r: 0.68490565, g: 0.8656975, b: 1, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
