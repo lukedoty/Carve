@@ -1,8 +1,7 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
-using TreeEditor;
-using Unity.Mathematics;
-using Unity.VisualScripting;
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.Splines;
 using UnityEngine.UIElements;
@@ -11,6 +10,7 @@ public class Lift : MonoBehaviour
 {
     public String liftName;
 
+    [Header("Lift Models")]
     // Models that will make up the lift
     public GameObject pole;
     public GameObject chair;
@@ -18,6 +18,7 @@ public class Lift : MonoBehaviour
     public GameObject unloader;
     public GameObject empty;
 
+    [Header("Chair Rendering Adjustments")]
     // Adjustments for the chair spline
     public float lineHeight;
     public float lineSide;
@@ -31,6 +32,7 @@ public class Lift : MonoBehaviour
     // This will be multiplied by the length for consistency among all lifts
     public float duration;
 
+    [Header("Lift Component Locations")]
     // Location of the entrance
     public Vector3 start;
     // Location of the exit

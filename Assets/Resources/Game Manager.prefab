@@ -121,6 +121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::QuestManager
   m_registryList:
   - {fileID: 11400000, guid: d3700a6e3d89f7f4fac4dff922284369, type: 2}
+  - {fileID: 11400000, guid: cff51e5f77886e346856740708ce2ebd, type: 2}
   m_questEvaluationEnabled: 1
 --- !u!114 &2364865492163525185
 MonoBehaviour:
