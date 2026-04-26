@@ -26,7 +26,7 @@ public class StickerBookController : MonoBehaviour
             DisableBook();
         }
 
-        if (GameManager.Input.UIActions.ToggleStickerBook.WasPressedThisFrame())
+        if (GameManager.Input.PlayerActions.ToggleStickerBook.WasPressedThisFrame())
         {
             Debug.Log("Hello!");
         }
