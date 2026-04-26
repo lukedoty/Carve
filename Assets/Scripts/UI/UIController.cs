@@ -7,6 +7,8 @@ public class UIController : MonoBehaviour
     private GameObject m_cursor;
     [SerializeField]
     private GameObject m_journal;
+    [SerializeField]
+    private GameObject m_stickerBook;
     public GameObject CurrentSlope { get; set; }
     void Update()
     {
