@@ -17,6 +17,17 @@ public class RenderStickerPage : MonoBehaviour
         RenderPage();
     }
 
+    public void Update()
+    {
+        if (GameManager.Input.UIActions.AdvancePage.WasPressedThisFrame() && (advanceButton.interactable || !leftPage))
+        {
+            FlipForward();
+        } else if (GameManager.Input.UIActions.ReturnPage.WasPressedThisFrame() && (returnButton.interactable || !leftPage))
+        {
+            FlipBack();
+        }
+    }
+
     public void FlipForward()
     {
         if (pageNum + 2 <= GameManager.Sticker.StickerBookPages.Count + 1)

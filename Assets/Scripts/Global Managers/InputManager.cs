@@ -114,6 +114,8 @@ public readonly struct UIActions
     public readonly InputAction Select;
     public readonly InputAction ToggleJournal;
     public readonly InputAction ToggleStickerBook;
+    public readonly InputAction AdvancePage;
+    public readonly InputAction ReturnPage;
     public UIActions(InputActionMap uiMap)
     {
         UIMap = uiMap;
@@ -123,6 +125,8 @@ public readonly struct UIActions
         Select = uiMap.FindAction("Select", true);
         ToggleJournal = uiMap.FindAction("Toggle Journal", true);
         ToggleStickerBook = uiMap.FindAction("Toggle Sticker Book", true);
+        AdvancePage = uiMap.FindAction("Advance Page", true);
+        ReturnPage = uiMap.FindAction("Return Page", true);
     }
 
     public readonly bool Enabled => UIMap.enabled;
@@ -138,6 +142,8 @@ public struct UIInput
     public bool Select { get; private set; }
     public bool ToggleJournal { get; private set; }
     public bool ToggleStickerBook { get; private set; }
+    public bool AdvancePage { get; private set; }
+    public bool ReturnPage { get; private set; }
     public void Update(UIActions uiActions)
     {
         if (!uiActions.UIMap.enabled) return;
@@ -148,5 +154,7 @@ public struct UIInput
         Select = uiActions.Select.WasPressedThisFrame();
         ToggleJournal = uiActions.ToggleJournal.WasPressedThisFrame();
         ToggleStickerBook = uiActions.ToggleJournal.WasPressedThisFrame();
+        AdvancePage = uiActions.AdvancePage.WasPressedThisFrame();
+        ReturnPage = uiActions.AdvancePage.WasPressedThisFrame();
     }
 }

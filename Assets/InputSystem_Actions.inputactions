@@ -466,6 +466,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Advance Page",
+                    "type": "Button",
+                    "id": "d92b2614-4919-4524-94da-7556c8ad2519",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Return Page",
+                    "type": "Button",
+                    "id": "93fa9f90-ada5-4ee6-b6bb-7ab5e46a5fed",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -851,6 +869,28 @@
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "Toggle Sticker Book",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "52fa0992-36cd-402e-ae1d-6cddedd8332d",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Advance Page",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a5925291-c028-4f12-b172-83b1ce6bcdcd",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Return Page",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
