@@ -28,8 +28,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 778913298127897884}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.13052614, y: -0.000000029663424, z: 0.0000000039052623, w: 0.9914449}
-  m_LocalPosition: {x: 0, y: 2.2058659, z: -3.3807404}
+  m_LocalRotation: {x: -0.0043570776, y: -0.99089235, z: 0.13045382, w: -0.033095196}
+  m_LocalPosition: {x: -0.22557749, y: 2.2058716, z: 3.3732038}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -346,6 +346,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   m_skateDeadzone: 0.1
   m_ploughDeadzone: 0.1
+  m_journal: {fileID: 0}
 --- !u!114 &5206341332757346693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -365,8 +366,8 @@ MonoBehaviour:
   m_powerStopSpeedRequirement: 2.5
   m_powerStopMaxAngle: 90
   m_skateInput: 0
-  m_skateForce: 2
-  m_skatingSpeedLimit: 1.5
+  m_skateForce: 5
+  m_skatingSpeedLimit: 3
   m_skateSlopeLimit: 5
   m_plowInput: 0
   m_staticFrictionCutoffSpeed: 0.02
@@ -662,8 +663,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8966085418069378819}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.13052614, y: -0.000000029810753, z: 0.000000005024343, w: 0.9914449}
-  m_LocalPosition: {x: 0, y: 2.2058659, z: -3.3807404}
+  m_LocalRotation: {x: -0.004357077, y: -0.99089235, z: 0.13045382, w: -0.033095196}
+  m_LocalPosition: {x: -0.22557749, y: 2.2058716, z: 3.3732038}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
