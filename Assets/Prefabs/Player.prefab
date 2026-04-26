@@ -366,9 +366,9 @@ MonoBehaviour:
   m_powerStopSpeedRequirement: 2.5
   m_powerStopMaxAngle: 90
   m_skateInput: 0
-  m_skateForce: 2
-  m_skatingSpeedLimit: 1.5
-  m_skateSlopeLimit: 5
+  m_skateForce: 3
+  m_skatingSpeedLimit: 2.5
+  m_skateSlopeLimit: 10
   m_plowInput: 0
   m_staticFrictionCutoffSpeed: 0.02
   m_parallelFrictionRange: {x: 0.075, y: 0.5}
@@ -393,6 +393,12 @@ MonoBehaviour:
   baseVerticalAngle: 20
   verticalSmoothSharpness: 4
   maxVerticalOffsetAngle: 25
+  lookVerticalRange: 15
+  lookSmoothSharpness: 6
+  collisionLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  cameraRadius: 0.3
 --- !u!114 &19547644664697741
 MonoBehaviour:
   m_ObjectHideFlags: 0
