@@ -6,6 +6,7 @@ public class SkiAnimationController : MonoBehaviour
     [SerializeField]
     private Animator m_animator;
     private static readonly int s_turnHash = Animator.StringToHash("Turn");
+    private static readonly int s_yHash = Animator.StringToHash("Y");
 
     [Header("Transforms")]
     [SerializeField]
@@ -33,6 +34,8 @@ public class SkiAnimationController : MonoBehaviour
     private void Update()
     {
         m_animator.SetFloat(s_turnHash, m_controller.TurnInput);
+        m_animator.SetFloat(s_yHash, m_controller.SkateInput);
+
 
         // SKIS-TO-GROUND ALIGNMENT
 
