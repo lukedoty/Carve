@@ -166,11 +166,14 @@ public class SkiController : MonoBehaviour
             m_isPowerStopping = false;
         }
 
+        const float k_PowerStopRotSharpness = 14f;
         if (m_isPowerStopping)
         {
             float baseAngle = Vector3.SignedAngle(Vector3.forward, m_powerStopVel, Vector3.up);
-            float angle = m_turnInput * m_powerStopMaxAngle + baseAngle;
-            transform.rotation = Quaternion.AngleAxis(angle, Vector3.up);
+            float targetAngle = m_turnInput * m_powerStopMaxAngle + baseAngle;
+            Quaternion target = Quaternion.AngleAxis(targetAngle, Vector3.up);
+            float t = 1f - Mathf.Exp(-k_PowerStopRotSharpness * Time.deltaTime);
+            transform.rotation = Quaternion.Slerp(transform.rotation, target, t);
         }
         else
         {
