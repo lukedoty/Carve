@@ -54,6 +54,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StickerBookController
   m_leftPage: {fileID: 4516982246024128902}
   m_rightPage: {fileID: 187881056320292806}
+  book: {fileID: 0}
 --- !u!223 &8198590037242817993
 Canvas:
   m_ObjectHideFlags: 0
@@ -696,7 +697,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3747012662520884371
 RectTransform:
   m_ObjectHideFlags: 0
