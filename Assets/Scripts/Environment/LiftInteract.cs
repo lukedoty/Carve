@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.Cinemachine;
 using UnityEngine;
 
 public class LiftInteract : Interactable
@@ -7,6 +8,8 @@ public class LiftInteract : Interactable
     private string m_name;
     [SerializeField]
     private Vector3 m_tpLocation;
+    [SerializeField]
+    private CinemachineCamera m_vcam;
     private GameObject m_player;
 
     private void Awake()
@@ -32,10 +35,18 @@ public class LiftInteract : Interactable
         SkiController controller = m_player.GetComponent<SkiController>();
         controller.ZeroVelocityAndAcceleration();
         controller.Freeze();
+
+        Vector3 delta = m_tpLocation - m_player.transform.position;
         m_player.transform.position = m_tpLocation;
 
+        if (m_vcam != null)
+            m_vcam.OnTargetObjectWarped(m_player.transform, delta);
+
+        if (m_player.TryGetComponent<SkiCamController>(out var camCtrl))
+            camCtrl.ResetSmoothing();
+
         yield return new WaitForSeconds(0.5f);
-        
+
         controller.Unfreeze();
     }
 
