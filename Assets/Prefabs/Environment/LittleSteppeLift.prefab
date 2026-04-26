@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2523528103529199542
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4141103562902811427}
+  - component: {fileID: 8474100017659849491}
+  m_Layer: 0
+  m_Name: LittleSteppeLift
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4141103562902811427
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2523528103529199542}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.67886, y: 5.3, z: 30.36897}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8474100017659849491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2523528103529199542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 268e64e423b51ae499e54025eeebed30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Lift
+  liftName: Little Lift
+  pole: {fileID: 7837604767723009802, guid: c1fc39570a14d92489ad22d923b7d671, type: 3}
+  chair: {fileID: 5859216245648044646, guid: 08c65a327577dba4db50dfbde2ad8f8f, type: 3}
+  loader: {fileID: 4621091518013710903, guid: fde92cadead2e154d8667754e35ae54d, type: 3}
+  unloader: {fileID: 2770224233819393937, guid: 6b8ad1522a64c594b858de6378f43d31, type: 3}
+  empty: {fileID: 4702754282985361927, guid: ac3e030acfeed9a4389db6a6b2b6b855, type: 3}
+  lineHeight: 13
+  lineSide: 2.5
+  loaderLen: 11
+  unloaderLen: 5
+  numChairs: 15
+  duration: 1
+  start: {x: -10, y: -0.1, z: 23}
+  end: {x: -10, y: 25, z: 130}
+  poleLocations:
+  - {x: -10, y: 7, z: 70}
+  - {x: -10, y: 11, z: 90}
+  - {x: -10, y: 20, z: 110}
