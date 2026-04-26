@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -44,6 +45,11 @@ public class RenderStickerPage : MonoBehaviour
             {
                 image.enabled = false;
             }
+            TextMeshProUGUI hiddenText = GetComponentInChildren<TextMeshProUGUI>();
+            if (hiddenText != null)
+            {
+                hiddenText.enabled = false;
+            }
             return;
         }
 
@@ -69,6 +75,16 @@ public class RenderStickerPage : MonoBehaviour
             // Sets image to sticker sprite
             image.sprite = sticker.StickerImage;
             i++;
+        }
+
+        TextMeshProUGUI text = GetComponentInChildren<TextMeshProUGUI>();
+        if (text != null)
+        {
+            text.enabled = true;
+            text.text = GameManager.Sticker.StickerBookPages[pageNum].pageTitle;
+        } else
+        {
+            Debug.LogError("Stickerbook page text not found.");
         }
     }
 
