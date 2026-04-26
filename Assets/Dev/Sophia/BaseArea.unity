@@ -14804,6 +14804,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8474100017659849491, guid: 23431364424926845ba8c04924bb31b4, type: 3}
+      propertyPath: imageSwapDelay
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8474100017659849491, guid: 23431364424926845ba8c04924bb31b4, type: 3}
+      propertyPath: evilAds.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8474100017659849491, guid: 23431364424926845ba8c04924bb31b4, type: 3}
+      propertyPath: goodAds.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8474100017659849491, guid: 23431364424926845ba8c04924bb31b4, type: 3}
+      propertyPath: goodScreenQuest.m_id
+      value: ending
+      objectReference: {fileID: 0}
+    - target: {fileID: 8474100017659849491, guid: 23431364424926845ba8c04924bb31b4, type: 3}
+      propertyPath: 'evilAds.Array.data[0]'
+      value: 
+      objectReference: {fileID: 3506167780502562645, guid: 3878395373ac74776a5740deffdb1753, type: 3}
+    - target: {fileID: 8474100017659849491, guid: 23431364424926845ba8c04924bb31b4, type: 3}
+      propertyPath: 'evilAds.Array.data[1]'
+      value: 
+      objectReference: {fileID: 5866165431930342980, guid: 3878395373ac74776a5740deffdb1753, type: 3}
+    - target: {fileID: 8474100017659849491, guid: 23431364424926845ba8c04924bb31b4, type: 3}
+      propertyPath: 'goodAds.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2800000, guid: dc023a6a07073bdf380643ff0151433a, type: 3}
+    - target: {fileID: 8474100017659849491, guid: 23431364424926845ba8c04924bb31b4, type: 3}
+      propertyPath: 'goodAds.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2800000, guid: b5e398de749ceda40ba41b07ee2598da, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
