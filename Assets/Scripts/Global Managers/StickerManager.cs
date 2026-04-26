@@ -14,9 +14,7 @@ public class StickerManager : RegistryController<Sticker>
     public struct StickerPage
     {
         public string pageTitle;
-        public Sticker topSticker;
-        public Sticker midSticker;
-        public Sticker bottomSticker;
+        public List<Sticker> stickers;
     }
 
     [SerializeField]

@@ -68,6 +68,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Toggle Sticker Book",
+                    "type": "Button",
+                    "id": "4fd1c5ae-2bfb-4b7c-9348-bc80fd6b0f24",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -312,6 +321,28 @@
                     "action": "Toggle Journal",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "76092642-e9f8-4f81-bf63-a5257dc1f951",
+                    "path": "<Keyboard>/j",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Toggle Sticker Book",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e24c3445-39f3-42c6-be6b-d3a2109b4943",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "Toggle Sticker Book",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -422,6 +453,15 @@
                     "name": "Toggle Journal",
                     "type": "Button",
                     "id": "523637a0-2e7c-4eae-b66a-0eae8a0756e6",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Toggle Sticker Book",
+                    "type": "Button",
+                    "id": "47a227a0-c200-4006-872f-5a7c894aa815",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -789,6 +829,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Toggle Journal",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9854b310-39ad-4bdd-96db-0114a028850a",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "Toggle Sticker Book",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0574dd8c-bf04-43cb-9b5c-7bfcefba3a23",
+                    "path": "<Keyboard>/j",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Toggle Sticker Book",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
