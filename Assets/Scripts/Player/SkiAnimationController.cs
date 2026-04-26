@@ -3,6 +3,9 @@ using UnityEngine;
 [RequireComponent (typeof(SkiController))]
 public class SkiAnimationController : MonoBehaviour
 {
+    [SerializeField]
+    private Animator m_animator;
+
     [Header("Transforms")]
     [SerializeField]
     private Transform m_model;
