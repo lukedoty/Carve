@@ -9,6 +9,7 @@ public class QuestLog : MonoBehaviour
     [SerializeField]
     private GameObject m_content;
     private Dictionary<string, GameObject> questObjs = new Dictionary<string, GameObject>();
+    /**
     void Start()
     {
         GameManager.Quest.AssignQuestEvent.AddListener((id) => NewEntry(id));
@@ -29,5 +30,27 @@ public class QuestLog : MonoBehaviour
         Debug.Log("removing entry!");
         Destroy(questObjs[id]);
         questObjs.Remove(id);
+    }
+    **/
+
+    private void OnEnable()
+    {
+        foreach (QuestState state in GameManager.Quest.ActiveQuestStates)
+        {
+            GameObject entry = Instantiate(m_entryPrefab, m_content.transform);
+                questObjs.Add(state.QuestID, entry);
+                entry.GetComponent<UIQuest>().UpdateText
+                    (GameManager.Quest.Registry[state.QuestID].Name, GameManager.Quest.Registry[state.QuestID].Description);
+                LayoutRebuilder.ForceRebuildLayoutImmediate(m_content.GetComponent<RectTransform>());
+        }
+    }
+
+    private void OnDisable()
+    {
+        foreach (GameObject entry in questObjs.Values)
+        {
+            Destroy(entry);
+        }
+        questObjs = new Dictionary<string, GameObject>();
     }
 }
