@@ -19,4 +19,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 43d314a6873b5e64bad10c9e0ecfbdc4, type: 2}
   - {fileID: 11400000, guid: 2fb399a23f3e87a46891604f6c5f9e1f, type: 2}
   - {fileID: 11400000, guid: 5d32bd23273e65840a0084db2f9e9f1a, type: 2}
-  m_rewards: []
+  m_rewards:
+  - RewardType: 0
+    ID: YourDidIt
