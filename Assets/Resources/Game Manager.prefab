@@ -122,6 +122,7 @@ MonoBehaviour:
   m_registryList:
   - {fileID: 11400000, guid: d3700a6e3d89f7f4fac4dff922284369, type: 2}
   - {fileID: 11400000, guid: cff51e5f77886e346856740708ce2ebd, type: 2}
+  - {fileID: 11400000, guid: 325beeb98578c024faa0098078df8211, type: 2}
   m_questEvaluationEnabled: 1
 --- !u!114 &2364865492163525185
 MonoBehaviour:
@@ -143,16 +144,17 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2b515c8bf50704142abf0dbf66eaba20, type: 2}
   - {fileID: 11400000, guid: f2460af729f737448abcc1412919d2ea, type: 2}
   - {fileID: 11400000, guid: d4fb8d458a2831b4bb2548b7167041bc, type: 2}
+  - {fileID: 11400000, guid: cb41eb9cf1a1e094ca83653e0dde1542, type: 2}
   StickerBookPages:
   - pageTitle: Green Slopes
     stickers:
     - {fileID: 11400000, guid: 3e1c8dd595c4e834e95a878963bc10fa, type: 2}
-    - {fileID: 11400000, guid: 185f5f3f0d426d14bb76fbff89b1cf4f, type: 2}
-    - {fileID: 11400000, guid: 2b515c8bf50704142abf0dbf66eaba20, type: 2}
   - pageTitle: Blue Slopes
     stickers:
-    - {fileID: 11400000, guid: a51cf4a39997e004f87d1d8ae8688f31, type: 2}
     - {fileID: 11400000, guid: f2460af729f737448abcc1412919d2ea, type: 2}
   - pageTitle: Black Diamond Slopes
     stickers:
     - {fileID: 11400000, guid: d4fb8d458a2831b4bb2548b7167041bc, type: 2}
+  - pageTitle: Special Stickers
+    stickers:
+    - {fileID: 11400000, guid: cb41eb9cf1a1e094ca83653e0dde1542, type: 2}

@@ -29,15 +29,14 @@ public class LiftInteract : Interactable
         if (m_player != null)
         {
             SkiController controller = m_player.GetComponent<SkiController>();
+            controller.Freeze();
+            controller.ZeroVelocityAndAcceleration();
             StartCoroutine(Teleport());
         }
     }
 
     public IEnumerator Teleport()
     {
-        SkiController controller = m_player.GetComponent<SkiController>();
-        controller.Freeze();
-        controller.ZeroVelocityAndAcceleration();
         yield return Fade();
         
         m_blackPanel.color = new Color(0, 0, 0, 0);
@@ -59,6 +58,7 @@ public class LiftInteract : Interactable
 
     private IEnumerator Fade()
     {
+        yield return new WaitForEndOfFrame();
         float m_timer = 0;
         float m_percentFaded;
         
@@ -69,10 +69,11 @@ public class LiftInteract : Interactable
             m_blackPanel.color = new Color(0, 0, 0, m_percentFaded);
             yield return null;
         }
-        m_player.transform.position = m_tpLocation;
+        m_player.GetComponent<SkiController>().MovePlayer(m_tpLocation);
         Debug.Log($"target: {m_tpLocation}, reality: {m_player.transform.position}");
+        yield return new WaitForSeconds(0.2f);
         m_player.GetComponent<SkiController>().Unfreeze();
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.8f);
     }
 
     private IEnumerator Unfade()

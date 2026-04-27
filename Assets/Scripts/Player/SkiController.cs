@@ -288,4 +288,9 @@ public class SkiController : MonoBehaviour
     public void Freeze() => m_isFrozen = true;
 
     public void Unfreeze() => m_isFrozen = false;
+
+    public void MovePlayer(Vector3 newPos)
+    {
+        gameObject.transform.position = newPos;
+    }
 }

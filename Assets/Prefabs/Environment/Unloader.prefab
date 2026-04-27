@@ -40,6 +40,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1826404814510942226}
     m_Modifications:
+    - target: {fileID: 768770203954540292, guid: 2e9310ccf07364b498cd7aeddb69e980, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1273326950075780817, guid: 2e9310ccf07364b498cd7aeddb69e980, type: 3}
       propertyPath: m_Name
       value: SkiLiftTopPole
