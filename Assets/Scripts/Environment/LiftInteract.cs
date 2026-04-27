@@ -11,7 +11,7 @@ public class LiftInteract : Interactable
     [SerializeField]
     private Image m_blackPanel;
     [SerializeField]
-    private float m_fadeTime;
+    private float m_fadeTime = 2;
     private GameObject m_player;
 
     private void Awake()
@@ -28,6 +28,7 @@ public class LiftInteract : Interactable
     {
         if (m_player != null)
         {
+            SkiController controller = m_player.GetComponent<SkiController>();
             StartCoroutine(Teleport());
         }
     }
@@ -35,15 +36,15 @@ public class LiftInteract : Interactable
     public IEnumerator Teleport()
     {
         SkiController controller = m_player.GetComponent<SkiController>();
-        controller.ZeroVelocityAndAcceleration();
         controller.Freeze();
+        controller.ZeroVelocityAndAcceleration();
         yield return Fade();
         
         m_blackPanel.color = new Color(0, 0, 0, 0);
         yield return Unfade();
     }
 
-    public void setTPLocation(Vector3 location)
+    public void SetTPLocation(Vector3 location)
     {
         m_tpLocation = location;
     }
@@ -69,6 +70,7 @@ public class LiftInteract : Interactable
             yield return null;
         }
         m_player.transform.position = m_tpLocation;
+        Debug.Log($"target: {m_tpLocation}, reality: {m_player.transform.position}");
         m_player.GetComponent<SkiController>().Unfreeze();
         yield return new WaitForSeconds(1f);
     }
