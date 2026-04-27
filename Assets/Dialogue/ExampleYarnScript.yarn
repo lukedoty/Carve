@@ -23,6 +23,7 @@ Mr. Snowman: Is it a little warm in here or is that just me?
     Mr. Snowman: I fear for my safety, friend.
     Mr. Snowman: For each year is warmer than the last.
     Mr. Snowman: How many more will pass 'till I am simply a puddle on this mountain?
+    <<assign-quest allTheStickers>>
 -> Nah I don't think so
     Mr. Snowman: Ah, apologies.
 ===
@@ -32,13 +33,7 @@ title: Employee
 Employee: Hello! Skier! 
 Employee: Have you been informed about the company yet?
 -> Yea...
-    Employee: So you know our plans!
-    -> Yea I'm not letting that happen.
-        Employee: What are you gonna do about it?
-        -> Race you off this mountain
-            Employee: I'd like to see you try.
-    -> Uh yeah do whatever you want.
-        Employee: I hope you enjoy the new mountain!
+    Employee: Fantastic!
 -> No?
     Employee: You should be sure to familiarize yourself.
     Employee: We're in the process of acquiring this mountain.
@@ -48,22 +43,14 @@ Employee: Have you been informed about the company yet?
         Employee: If you dont mind, can you fill out this form for me?
         Employee: If you fill it out, Im one step closer to that promotion!
         -> Hell no!
-            Employee: No? Why?
-            -> Im racing you off MY mountain.
-                Employee: I'd like to see you try.
+            Employee: Uh ok... Rude.
         -> Uh, sure.
             Employee: Thank you!
 ===
 
-title: EmployeeDefeat
+title: Activist
 ---
-Employee: I've got to report this to my supervisor....
-Employee: Aww.. Im never getting that promotion now...
-===
-
-title: EmployeeWin
----
-Employee: Are you sure you dont want to fill out that form for me?
+Activist: 
 ===
 
 title: Supervisor
@@ -90,7 +77,6 @@ title: Baby1
 ---
 Baby: This slope is for babies!
 ===
-
 
 title: ExampleNPC
 ---
