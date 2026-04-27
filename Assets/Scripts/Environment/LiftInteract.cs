@@ -71,8 +71,9 @@ public class LiftInteract : Interactable
         }
         m_player.GetComponent<SkiController>().MovePlayer(m_tpLocation);
         Debug.Log($"target: {m_tpLocation}, reality: {m_player.transform.position}");
-        //m_player.GetComponent<SkiController>().Unfreeze();
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.2f);
+        m_player.GetComponent<SkiController>().Unfreeze();
+        yield return new WaitForSeconds(0.8f);
     }
 
     private IEnumerator Unfade()
