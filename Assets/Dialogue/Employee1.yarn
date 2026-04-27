@@ -1,0 +1,70 @@
+﻿title: Employee1_Act1
+---
+Company Employee: Hello! Skier! 
+Company Employee: Have you been informed about the company yet?
+-> Yea...
+    Company Employee: So you know our plans!
+    Company Employee: I can't wait to see what happens to the resort.
+    Company Employee: Maybe they'll give me an employee discount.
+    Company Employee: ...
+    Company Employee: Maybe they'll give me a promotion!
+-> No?
+    Company Employee: You should be sure to familiarize yourself.
+    Company Employee: We're in the process of acquiring this mountain.
+    -> Acquire the mountain?
+        Company Employee: Yes! The mountain will be so much better afterwards.
+        Company Employee: I mean lift tickets might get more expensive, but that's not important...
+        Company Employee: If you dont mind, can you fill out this review for me?
+        Company Employee: If you fill it out, I'm one step closer to that promotion!
+        -> Hell no!
+            Company Employee: Well whatever! I'm sure I can get other people to review me!
+        -> Uh, sure.
+            Company Employee: Thank you! I love you!
+===
+
+title: Employee1_Act2
+---
+Company Employee: Hello! Skier! Again!
+-> What are you looking at?
+    Company Employee: Me? I'm just looking at the scenery.
+    Company Employee: Did you know there's a lake nearby?
+    Company Employee: The Company wants to make these big artificial snow generators.
+    Company Employee: It'll make the skiing season last longer.
+    Company Employee: I wonder if they'll use the lake for the water.
+-> ...
+Company Employee: ... 
+Company Employee: Would you be willing to fill out my employee review?
+-> No.
+    Company Employee: ... darn.
+-> I will... later.
+    Company Employee: I look forward to it! I love you!
+===
+
+title: Employee1_Act3
+---
+Company Employee: So you're trying to stop us?
+Company Employee: Ha! Good luck! I've got my promotion in the bag!
+Company Employee: I've seen the designs the graphic design team has been doing.
+Company Employee: This place is about to get a whole lot livelier if I have anything to say about it!
+Company Employee: ...
+Company Employee: Would you be willing to fill out my employee review?
+-> NO!
+    Company Employee: WHO CARES!
+    Company Employee: I DON'T WANT YOU TO DO MY EMPLOYEE REVIEW ANYWAY!
+-> FINE!
+    Company Employee: THANK YOU THEN! I LOVE YOU!
+===
+
+title: Employee1_Act4
+---
+Company Employee: ...
+Company Employee: Sigh...
+Company Employee: Yeah, whatever, you won...
+Company Employee: My promotion is down the drain. Happy?
+Company Employee: ... 
+Company Employee: Would you fill out my employee review? For old times sake?
+-> No. 
+    Company Employee: Worth a shot, I guess.
+-> Sure, why not.
+    Company Employee: Thank you! I love you!
+===

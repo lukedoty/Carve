@@ -1,0 +1,54 @@
+﻿title: Owner_Act1
+---
+Owner: Hello!
+Owner: You're new here, aren't you? I don't think I've seen you around before.
+Owner: Welcome to Yeti's Lawn! I am the Owner of this place.
+Owner: I see you already have your skis.
+Owner: It's a lovely day, friend. Enjoy the mountain!
+===
+
+title: Owner_Act2_NoClue
+---
+Owner: ...
+Owner: Sorry, friend, did you need to say something?
+Owner: The silence is quite nice, don't you think? 
+Owner: It's a lovely day, friend. Enjoy the mountain.
+===
+
+title: Owner_Act2_WithClue
+---
+Owner: ... Wow.
+Owner: I... I had no idea they...
+Owner: ...
+Owner: This isn't enough... even with... this. 
+Owner: This place suffers relying on natural snowfall, even if we haven't had it the worst because of the high altitude were at.
+Owner: At the end of the day, I want Yeti's Lawn alive.
+-> What if I found something else?
+    Owner: If you found something else?
+    Owner: ... It depends on what you find, but I would give it a good thinking.
+Owner: It's a lovely day, friend. Enjoy the mountain.
+===
+
+title: Owner_Act3_NoClue
+---
+Owner: ...
+Owner: Sorry, friend, did you need to say something?
+Owner: The silence is quite nice, don't you think? 
+Owner: It's a lovely day, friend. Enjoy the mountain.
+===
+
+title: Owner_Act3_WithClue
+---
+Owner: ...
+Owner: I see.
+Owner: Excuse me.
+===
+
+title: Owner_Act4
+---
+Owner: Hello!
+Owner: Listen, friend... I wanted to thank you.
+Owner: I think I was blinded by my love of the resort, I want this resort to mourn me, not the other way around.
+Owner: I see you have your skis.
+Owner: It's a lovely day, friend. Enjoy the mountain!
+===

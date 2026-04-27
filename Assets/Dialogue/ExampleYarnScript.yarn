@@ -13,9 +13,10 @@ Anyways!
 title: MrSnowman
 ---
 Mr. Snowman: ...
-Mr. Snowman: .....
+Mr. Snowman: ...
+Mr. Snowman: ...
+Mr. Snowman: ....
 Mr. Snowman: Hello! I'm Mr. Snowman!
-Mr. Snowman: .....
 Mr. Snowman: I haven't had the pleasure of speaking to someone in years!
 Mr. Snowman: I must inquire with you...
 Mr. Snowman: Is it a little warm in here or is that just me?
@@ -25,34 +26,7 @@ Mr. Snowman: Is it a little warm in here or is that just me?
     Mr. Snowman: How many more will pass 'till I am simply a puddle on this mountain?
 -> Nah I don't think so
     Mr. Snowman: Ah, apologies.
-===
-
-title: Employee
----
-Employee: Hello! Skier! 
-Employee: Have you been informed about the company yet?
--> Yea...
-    Employee: So you know our plans!
-    -> Yea I'm not letting that happen.
-        Employee: What are you gonna do about it?
-        -> Race you off this mountain
-            Employee: I'd like to see you try.
-    -> Uh yeah do whatever you want.
-        Employee: I hope you enjoy the new mountain!
--> No?
-    Employee: You should be sure to familiarize yourself.
-    Employee: We're in the process of acquiring this mountain.
-    -> Acquire the mountain??
-        Employee: Yes! The mountain will be so much better afterwards.
-        Employee: I mean lift tickets might get more expensive, but that's not important-
-        Employee: If you dont mind, can you fill out this form for me?
-        Employee: If you fill it out, Im one step closer to that promotion!
-        -> Hell no!
-            Employee: No? Why?
-            -> Im racing you off MY mountain.
-                Employee: I'd like to see you try.
-        -> Uh, sure.
-            Employee: Thank you!
+    Mr. Snowman: I guess I'll just melt all by my lonesome...
 ===
 
 title: EmployeeDefeat

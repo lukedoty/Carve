@@ -1,0 +1,46 @@
+﻿title: Activist_Act1
+---
+Activist: Pst.
+Activist: Hey.
+Activist: Hey you.
+Activist: You like this place right? 
+Activist: The Company, they want the owner to sell it to them.
+Activist: Last I heard the owner was leaning towards the buyout.
+Activist: That can't happen. They'd make everything more expensive, ice out all the normal people to make way for the elite.
+Activist: Skiing should be for everyone!
+Activist: Not to mention the environmental impact they would do on this place.
+Activist: I want to save it. Would you want to help?
+-> Yes! Absolutely!
+    Activist: Great! Thank god!
+    Activist: There should be some clues out there that would convince the owner to change her mind.
+    Activist: Maybe try talking to people, they might know something.
+-> I don't know...
+    Activist: That's alright. I don't want to pressure you.
+    Activist: If you change your mind though, I would apprieciate the help.
+===
+
+title: Activist_Act2
+---
+Activist: I've overheard some people talking about a recording.
+Activist: Something about some guy talking about the landscaping they'd do.
+Activist: I've been trying to find it on the trails, but I've had no luck.
+Activist: Maybe you can help me out? 
+===
+
+title: Activist_Act3
+---
+Activist: Hey get this: there's a flash drive somewhere around here.
+Activist: Apparently, the designer employee dropped it.
+Activist: I'd say, there would be some freaky company advertising on there.
+Activist: We have to find it!
+===
+
+title: Activist_Act4
+---
+Activist: Hey you!
+Activist: I wanted to thank you for you help with all this.
+Activist: I feel bad, you did all the work.
+Activist: Either way, now, we and everyone else gets to enjoy skiing.
+Activist: Skiing is for everyone! It's the community that makes it special!
+Activist: Thank you!
+===
