@@ -5930,15 +5930,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1129974995081401060, guid: 9a8a9b26717e6a94fa188addb676d903, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 7.94
       objectReference: {fileID: 0}
     - target: {fileID: 1129974995081401060, guid: 9a8a9b26717e6a94fa188addb676d903, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 26.91
       objectReference: {fileID: 0}
     - target: {fileID: 1129974995081401060, guid: 9a8a9b26717e6a94fa188addb676d903, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 133.4
       objectReference: {fileID: 0}
     - target: {fileID: 1129974995081401060, guid: 9a8a9b26717e6a94fa188addb676d903, type: 3}
       propertyPath: m_LocalRotation.w
@@ -17257,6 +17257,30 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 7024613285929554694, guid: 8e34f2b3ec69d0d4cadf972c8d9ecf2f, type: 3}
   m_PrefabInstance: {fileID: 292381647}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1060236703 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8825187262344739491, guid: 6540972f611ff3b4fb06a18fa8c9635c, type: 3}
+  m_PrefabInstance: {fileID: 6862655876728357977}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1060236704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1060236703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a589ebd29f553b6428995bb0ba518c71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Hotdog
+  hotdog: {fileID: 572142734531955016, guid: 27b4e695685f5924f99d191f0d2c21ab, type: 3}
+  hotdogSpawnLocation: {fileID: 1873595893}
+--- !u!4 &1060236708 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8156737602899959833, guid: 6540972f611ff3b4fb06a18fa8c9635c, type: 3}
+  m_PrefabInstance: {fileID: 6862655876728357977}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1068894633
 PrefabInstance:
@@ -44202,6 +44226,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8508912155832566112, guid: e05c7dd3133404840b9588a61ef7b6fc, type: 3}
   m_PrefabInstance: {fileID: 366166502}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1873595893
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1873595894}
+  m_Layer: 0
+  m_Name: HotdogSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1873595894
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1873595893}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.00000017881393, y: 0.00000011920929, z: -0.8312409, w: 0.5559125}
+  m_LocalPosition: {x: -0.88, y: 1.83, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1060236708}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -112.453}
 --- !u!1001 &1882439194
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -47475,8 +47530,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 8156737602899959833, guid: 6540972f611ff3b4fb06a18fa8c9635c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1873595894}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8825187262344739491, guid: 6540972f611ff3b4fb06a18fa8c9635c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1060236704}
   m_SourcePrefab: {fileID: 100100000, guid: 6540972f611ff3b4fb06a18fa8c9635c, type: 3}
 --- !u!1001 &6986699996688932672
 PrefabInstance:
