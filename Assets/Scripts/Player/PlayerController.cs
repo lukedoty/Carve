@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private GameObject m_journal;
+    [SerializeField]
+    private GameObject m_pauseMenu;
 
     private SkiController m_controller;
     private PlayerInteract m_interact;
@@ -37,7 +39,12 @@ public class PlayerController : MonoBehaviour
             GameManager.Input.PlayerActions.Disable();
             GameManager.Input.Player.ZeroInputs();
             m_journal.SetActive(true);
+        }
 
+        if (GameManager.Input.Player.Pause)
+        {
+            Time.timeScale = 0;
+            m_pauseMenu.SetActive(true);
         }
     }
 

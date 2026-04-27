@@ -9,6 +9,8 @@ public class UIController : MonoBehaviour
     private GameObject m_journal;
     [SerializeField]
     private GameObject m_stickerBook;
+    [SerializeField]
+    private GameObject m_pauseMenu;
     public GameObject CurrentSlope { get; set; }
     void Update()
     {
@@ -36,6 +38,12 @@ public class UIController : MonoBehaviour
         {
             m_journal.SetActive(false);
             GameManager.Input.PlayerActions.Enable();
+        }
+
+        if (GameManager.Input.UI.Pause)
+        {
+            Time.timeScale = 0;
+            m_pauseMenu.SetActive(true);
         }
     }
 }
