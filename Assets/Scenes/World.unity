@@ -7673,6 +7673,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2929274315423003932, guid: 5149fb02f1f7a8307942fce79ecec00a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ef268a835a0fc49dd8fe8d5f994ecc34, type: 3}
     - target: {fileID: 4653123145635772398, guid: 5149fb02f1f7a8307942fce79ecec00a, type: 3}
       propertyPath: m_Name
       value: JounalCanvas
