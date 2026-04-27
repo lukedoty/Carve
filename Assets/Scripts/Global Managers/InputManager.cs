@@ -48,6 +48,7 @@ public readonly struct PlayerActions
     public readonly InputAction Interact;
     public readonly InputAction ToggleJournal;
     public readonly InputAction ToggleStickerBook;
+    public readonly InputAction Pause;
 
     public PlayerActions(InputActionMap playerMap)
     {
@@ -60,6 +61,7 @@ public readonly struct PlayerActions
         Interact = playerMap.FindAction("Interact", true);
         ToggleJournal = playerMap.FindAction("Toggle Journal", true);
         ToggleStickerBook = playerMap.FindAction("Toggle Sticker Book", true);
+        Pause = playerMap.FindAction("Pause", true);
     }
 
     public readonly bool Enabled => PlayerMap.enabled;
@@ -77,6 +79,7 @@ public struct PlayerInput
     public bool Interact { get; private set; }
     public bool ToggleJournal { get; private set; }
     public bool ToggleStickerBook { get; private set; }
+    public bool Pause { get; private set; }
 
     public void Update(PlayerActions playerActions)
     {
@@ -90,6 +93,7 @@ public struct PlayerInput
         Interact = playerActions.Interact.IsPressed();
         ToggleJournal = playerActions.ToggleJournal.WasPerformedThisFrame();
         ToggleStickerBook = playerActions.ToggleStickerBook.WasPerformedThisFrame();
+        Pause = playerActions.Pause.WasPressedThisFrame();
     }
 
     public void ZeroInputs()
@@ -116,6 +120,8 @@ public readonly struct UIActions
     public readonly InputAction ToggleStickerBook;
     public readonly InputAction AdvancePage;
     public readonly InputAction ReturnPage;
+    public readonly InputAction Cancel;
+    public readonly InputAction Pause;
     public UIActions(InputActionMap uiMap)
     {
         UIMap = uiMap;
@@ -127,6 +133,8 @@ public readonly struct UIActions
         ToggleStickerBook = uiMap.FindAction("Toggle Sticker Book", true);
         AdvancePage = uiMap.FindAction("Advance Page", true);
         ReturnPage = uiMap.FindAction("Return Page", true);
+        Cancel = uiMap.FindAction("Cancel", true);
+        Pause = uiMap.FindAction("Pause", true);
     }
 
     public readonly bool Enabled => UIMap.enabled;
@@ -144,6 +152,8 @@ public struct UIInput
     public bool ToggleStickerBook { get; private set; }
     public bool AdvancePage { get; private set; }
     public bool ReturnPage { get; private set; }
+    public bool Cancel { get; private set; }
+    public bool Pause { get; private set; }
     public void Update(UIActions uiActions)
     {
         if (!uiActions.UIMap.enabled) return;
@@ -153,8 +163,10 @@ public struct UIInput
         Navigate = uiActions.Navigate.ReadValue<Vector2>();
         Select = uiActions.Select.WasPressedThisFrame();
         ToggleJournal = uiActions.ToggleJournal.WasPressedThisFrame();
-        ToggleStickerBook = uiActions.ToggleJournal.WasPressedThisFrame();
+        ToggleStickerBook = uiActions.ToggleStickerBook.WasPressedThisFrame();
         AdvancePage = uiActions.AdvancePage.WasPressedThisFrame();
-        ReturnPage = uiActions.AdvancePage.WasPressedThisFrame();
+        ReturnPage = uiActions.ReturnPage.WasPressedThisFrame();
+        Cancel = uiActions.Cancel.WasPressedThisFrame();
+        Pause = uiActions.Pause.WasPressedThisFrame();
     }
 }
