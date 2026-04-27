@@ -67,7 +67,7 @@ public class Lift : MonoBehaviour
             Debug.LogError($"LiftInteract could not be found on {liftName}.");
         } else
         {
-            interact.setTPLocation(end + new Vector3(0, 2, 2));
+            interact.SetTPLocation(end + new Vector3(0, 2, 2));
             Debug.Log($"TP Location set to {end + new Vector3(0, 10, 2)}");
         }
 
