@@ -63,6 +63,15 @@ CEO:
 title: Baby1
 ---
 Baby: This slope is for babies!
+-> What is a baby doing on the mountain??
+    Baby: I'm looking for stickers!
+    -> Stickers?
+        Baby: Yea! They hide a SECRET sticker on each slope.
+        Baby: I haven't been able to find any yet...
+        Baby: If you find them all, I'll give you a sticker from my collection.
+        <<assign-quest allTheStickers>>
+-> Aight, have fun I guess.
+    Baby: Yay!!
 ===
 
 
