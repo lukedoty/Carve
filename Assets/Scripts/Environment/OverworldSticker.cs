@@ -1,9 +1,4 @@
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
-using Mono.Cecil;
-using System;
-using System.Data.Common;
 using System.Collections;
 
 [RequireComponent(typeof(Collider))]
